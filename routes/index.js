@@ -54,7 +54,7 @@ router.get('/', function (req, res, next) {
     router.get("/relation", function(req,res){
         
         db.relation.findAll({
-            userID: req.body.userID
+            // userID: req.body.userID
         }).then(function(results){
             console.log("we want the results here")
             for(var i=0; i < results.length; i++){
