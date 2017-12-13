@@ -78,20 +78,20 @@ router.get('/', function (req, res, next) {
         });
     });
 
-    router.put("/relation", function(req,res){
-        relation.update(
-            {
-                firstName: req.body.firstName,
-                lastName: req.body.lastName,
-                relationship: req.body.relationship,
-                birthDate: req.body.birthDate,
-                address: req.body.address,
-                photo_url: req.body.photo_url
-            },
-            {where:{
-                id: req.body.id
-            }});
-    }).then();
+    // router.put("/relation", function(req,res){
+    //     relation.update(
+    //         {
+    //             firstName: req.body.firstName,
+    //             lastName: req.body.lastName,
+    //             relationship: req.body.relationship,
+    //             birthDate: req.body.birthDate,
+    //             address: req.body.address,
+    //             photo_url: req.body.photo_url
+    //         },
+    //         {where:{
+    //             id: req.body.id
+    //         }});
+    // }).then();
 
 
 
