@@ -2,8 +2,8 @@ var express = require("express");
 var bodyParser = require("body-parser");
 var path = require("path");
 var engine = require('ejs-mate');
-var index = require('./routes/index')
-
+var index = require('./routes/index');
+var userID = null;
 // bring in the models
 var db = require("./models");
 
@@ -21,7 +21,13 @@ app.set('views', path.join(__dirname, 'views'));
 app.set('view engine', 'ejs');;
 
 
+app.use(function(){
+  if(userID == null){
+    
+  }else{
 
+  }
+})
 
 app.use('/', index);
 // app.use("/create", routes);
