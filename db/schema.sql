@@ -1,4 +1,3 @@
-
 CREATE DATABASE IF NOT EXISTS db_giftology;
 
 USE db_giftology;
@@ -34,24 +33,24 @@ DROP TABLE IF EXISTS user;
 
 CREATE TABLE IF NOT EXISTS user(
 	id INT auto_increment,
-    firstName varchar(50) NOT NULL,
-    lastName varchar(50) NOT NULL,
-    password varchar(50) NOT NULL,
-    email varchar(50) NOT NULL,
-    photo_url varchar(200) NULL,
+    firstName varchar(500) NOT NULL,
+    lastName varchar(500) NOT NULL,
+    password varchar(500) NOT NULL,
+    email varchar(500) NOT NULL,
+    photo_url varchar(2000) NULL,
     primary key (id)
 );
 
 
-
 DROP TABLE IF EXISTS relation;
+
 
 CREATE TABLE IF NOT EXISTS relation(
 	id INT auto_increment,
     userID INT NOT NULL,
     firstName VARCHAR(50) NOT NULL,
     lastName VARCHAR(50) NULL,
-    relationhip VARCHAR(20) NULL,
+    relationship VARCHAR(20) NULL,
     birthDate DATE NULL,
     address VARCHAR(200) NULL,
     photo_url varchar(200) NULL,
@@ -61,15 +60,18 @@ CREATE TABLE IF NOT EXISTS relation(
         ON DELETE CASCADE
 );
 
+
 DROP TABLE IF EXISTS gift;
 
 CREATE TABLE IF NOT EXISTS gift(
 	id INT auto_increment,
     userID INT NOT NULL,
     relationID INT NOT NULL,
-    name VARCHAR(50) NOT NULL,
-    description VARCHAR(200) NOT NULL,
-    image_url VARCHAR(200) NULL,
+    name VARCHAR(1000) NOT NULL,
+    description VARCHAR(1000) NOT NULL,
+    image_url VARCHAR(1000) NULL,
+    web_url VARCHAR(1000) NOT NULL,
+    hasBeenBought BOOLEAN DEFAULT false,
     primary key (id),
     CONSTRAINT `fk_gift_user` FOREIGN KEY (userID)
 		REFERENCES user(id)
@@ -87,9 +89,9 @@ CREATE TABLE IF NOT EXISTS list_recipient(
 	id INT auto_increment,
     userID INT NOT NULL,
     relationID INT NOT NULL,
-    name VARCHAR(50) NOT NULL,
-    email VARCHAR(100) NOT NULL,
-    photo_url VARCHAR(200) NULL,
+    name VARCHAR(1000) NOT NULL,
+    email VARCHAR(1000) NOT NULL,
+    photo_url VARCHAR(2000) NULL,
     haveSentEmail boolean NOT NULL,
     primary key (id),
     CONSTRAINT `fk_list_recipient_user` FOREIGN KEY (userID)
@@ -99,4 +101,6 @@ CREATE TABLE IF NOT EXISTS list_recipient(
 		REFERENCES relation(id)
         ON DELETE CASCADE
 );
+
+
 
