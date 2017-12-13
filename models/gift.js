@@ -25,6 +25,11 @@ module.exports = function(sequelize, DataTypes){
         image_url:{
             type: DataTypes.STRING
         }
+    },
+    {
+        timestamps: false,
+        freezeTableName: true,
+        tableName:"gift"
     });
         return Gift;
 };

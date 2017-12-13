@@ -3,10 +3,12 @@ var router = express.Router();
 const db = require("../models");
 
 router.get('/', function (req, res, next) {
+    console.log("rendering signup");
     res.render('signup', {});
 });
 
 router.get('/home', function (req, res, next) {
+    
     res.render('home', {});
 });
 
@@ -58,7 +60,7 @@ router.get('/people', function (req, res, next) {
     router.put("/user", function(req,res){});
 
     //A user clicks on the Relations tab and sees all their relations
-    router.get("/relation", function(req,res){
+    router.get("/people", function(req,res){
         
         db.relation.findAll({
             // userID: req.body.userID
@@ -68,11 +70,11 @@ router.get('/people', function (req, res, next) {
                 console.log(results[i]);
             }
             console.log();
-           res.render("pages/relations", results); 
+           res.render("pages/peoples", results); 
         });
     });
 
-    router.post("/relation", function(req, res){
+    router.post("/people", function(req, res){
         relation.create({
             userID:req.body.userID,
             firstName:req.body.firstName,
@@ -100,6 +102,19 @@ router.get('/people', function (req, res, next) {
     //         }});
     // }).then();
 
+    // router.delete("/people", function(req,res){
+    //     relation.destroy({
+    //         where: {
+    //             id: req.body.id
+    //         }
+    //     });
+    // }).then(function(result){
+    //     if(result.deletedRows === 0){
+    //         return res.status(400).end();
+    //     }else{
+    //         res.status(200).end();
+    //     }
+    // });
 
 
 module.exports = router;
