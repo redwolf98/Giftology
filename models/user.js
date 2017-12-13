@@ -21,7 +21,8 @@ var User = sequelize.define("user",{
 },
 {
     timestamps: false,
-    freezeTableName: true
+    freezeTableName: true,
+    tableName:"user"
 });
     return User;
 };
