@@ -3,7 +3,7 @@ var router = express.Router();
 const db = require("../models");
 
 router.get('/', function (req, res, next) {
-    res.render('pages/index', {});
+    res.render('signup', {});
 });
 
     //return status(200) if email/password have match, status(404) if email/password doesn't exist

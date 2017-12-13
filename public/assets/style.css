@@ -1,0 +1,58 @@
+body {
+  padding-top: 56px;
+}
+
+@media (min-width: 992px) {
+  body {
+    padding-top: 90px;
+  }
+}
+
+h3 {
+  color: #343A3F;
+}
+
+.lead {
+  color: white;
+
+}
+
+.jumbotron {
+  /*background-image: url("../assets/images/jumbo-bg2.png");
+  background-size: cover;
+  background-color: transparent;*/
+
+  background: url("../assets/images/jumbo-bg2.png") no-repeat center center;
+    -webkit-background-size: 100% 100%;
+    -moz-background-size: 100% 100%;
+    -o-background-size: 100% 100%;
+    background-size: 100% 100%;
+}
+
+
+.btn-info, .btn-primary {
+background-color: #343A3F;
+border: none;
+}
+
+.btn-info:hover, .btn-primary:hover {
+background-color: #39BBA5;
+}
+
+.text1 {
+    color: #343A3F;
+  }
+
+.list-group {
+  width: 200px;
+}
+
+.list-group-item-action active {
+  background-color: black;
+}
+
+.center-block {
+    display: block;
+    margin-left: auto;
+    margin-right: auto;
+ }
