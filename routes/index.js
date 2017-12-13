@@ -51,7 +51,7 @@ router.get('/', function (req, res, next) {
     router.put("/user", function(req,res){});
 
     //A user clicks on the Relations tab and sees all their relations
-    router.get("/relation", function(req,res){
+    router.get("/people", function(req,res){
         
         db.relation.findAll({
             // userID: req.body.userID
@@ -61,11 +61,11 @@ router.get('/', function (req, res, next) {
                 console.log(results[i]);
             }
             console.log();
-           res.render("pages/relations", results); 
+           res.render("pages/peoples", results); 
         });
     });
 
-    router.post("/relation", function(req, res){
+    router.post("/people", function(req, res){
         relation.create({
             userID:req.body.userID,
             firstName:req.body.firstName,
@@ -78,21 +78,34 @@ router.get('/', function (req, res, next) {
         });
     });
 
-    // router.put("/relation", function(req,res){
-    //     relation.update(
-    //         {
-    //             firstName: req.body.firstName,
-    //             lastName: req.body.lastName,
-    //             relationship: req.body.relationship,
-    //             birthDate: req.body.birthDate,
-    //             address: req.body.address,
-    //             photo_url: req.body.photo_url
-    //         },
-    //         {where:{
-    //             id: req.body.id
-    //         }});
-    // }).then(function(results){});
+    router.put("/people", function(req,res){
+        relation.update(
+            {
+                firstName: req.body.firstName,
+                lastName: req.body.lastName,
+                relationship: req.body.relationship,
+                birthDate: req.body.birthDate,
+                address: req.body.address,
+                photo_url: req.body.photo_url
+            },
+            {where:{
+                id: req.body.id
+            }});
+    });
 
+    router.delete("/people", function(req,res){
+        relation.destroy({
+            where: {
+                id: req.body.id
+            }
+        });
+    }).then(function(result){
+        if(result.deletedRows === 0){
+            return res.status(400).end();
+        }else{
+            res.status(200).end();
+        }
+    });
 
 
 module.exports = router;
