@@ -6,6 +6,9 @@ router.get('/', function (req, res, next) {
     res.render('signup', {});
 });
 
+router.get('/home', function (req, res, next) {
+    res.render('home', {});
+});
     //return status(200) if email/password have match, status(404) if email/password doesn't exist
     router.get("/login", function(req, res){
         db.user.findAll({
