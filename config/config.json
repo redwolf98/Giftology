@@ -1,7 +1,7 @@
 {
   "development": {
     "username": "root",
-    "password": "Rorick23Raven",
+    "password": "root",
     "database": "db_giftology",
     "host": "127.0.0.1",
     "dialect": "mysql"
@@ -11,4 +11,3 @@
     "dialect": "mysql"
   }
 }
-
