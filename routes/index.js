@@ -3,9 +3,12 @@ var router = express.Router();
 const db = require("../models");
 
 router.get('/', function (req, res, next) {
-    res.render('pages/index', {});
+    res.render('signup', {});
 });
 
+router.get('/home', function (req, res, next) {
+    res.render('home', {});
+});
     //return status(200) if email/password have match, status(404) if email/password doesn't exist
     router.get("/login", function(req, res){
         db.user.findAll({
@@ -78,34 +81,34 @@ router.get('/', function (req, res, next) {
         });
     });
 
-    router.put("/people", function(req,res){
-        relation.update(
-            {
-                firstName: req.body.firstName,
-                lastName: req.body.lastName,
-                relationship: req.body.relationship,
-                birthDate: req.body.birthDate,
-                address: req.body.address,
-                photo_url: req.body.photo_url
-            },
-            {where:{
-                id: req.body.id
-            }});
-    });
+    // router.put("/relation", function(req,res){
+    //     relation.update(
+    //         {
+    //             firstName: req.body.firstName,
+    //             lastName: req.body.lastName,
+    //             relationship: req.body.relationship,
+    //             birthDate: req.body.birthDate,
+    //             address: req.body.address,
+    //             photo_url: req.body.photo_url
+    //         },
+    //         {where:{
+    //             id: req.body.id
+    //         }});
+    // }).then();
 
-    router.delete("/people", function(req,res){
-        relation.destroy({
-            where: {
-                id: req.body.id
-            }
-        });
-    }).then(function(result){
-        if(result.deletedRows === 0){
-            return res.status(400).end();
-        }else{
-            res.status(200).end();
-        }
-    });
+    // router.delete("/people", function(req,res){
+    //     relation.destroy({
+    //         where: {
+    //             id: req.body.id
+    //         }
+    //     });
+    // }).then(function(result){
+    //     if(result.deletedRows === 0){
+    //         return res.status(400).end();
+    //     }else{
+    //         res.status(200).end();
+    //     }
+    // });
 
 
 module.exports = router;

@@ -1,27 +1,33 @@
 var express = require("express");
 var bodyParser = require("body-parser");
 var path = require("path");
-const ejsLayouts = require("express-ejs-layouts");
-var index = require('./routes/index')
-
+var engine = require('ejs-mate');
+var index = require('./routes/index');
+var userID = null;
 // bring in the models
 var db = require("./models");
 
 var app = express();
 // Serve static content for the app from the "public" directory in the application directory.
-app.use(express.static(__dirname + "./public"));
+app.use(express.static(__dirname + "/public"));
 
 // parse application/x-www-form-urlencoded
 app.use(bodyParser.urlencoded({
   extended: false
 }));
 
-
+app.engine('ejs', engine);
 app.set('views', path.join(__dirname, 'views'));
 app.set('view engine', 'ejs');;
 
-app.use(ejsLayouts);
 
+app.use(function(){
+  if(userID == null){
+    
+  }else{
+
+  }
+})
 
 app.use('/', index);
 // app.use("/create", routes);
