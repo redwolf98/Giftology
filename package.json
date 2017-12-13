@@ -1,10 +1,11 @@
 {
-  "name": "node_what_todo",
+  "name": "giftology",
   "version": "1.0.0",
   "description": "-Node \r -Express \r -MySQL \r -Handlebars \r -Jquery",
   "main": "server.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "start": "node server.js"
   },
   "author": "",
   "license": "ISC",
@@ -16,5 +17,14 @@
     "mysql": "^2.15.0",
     "mysql2": "^1.5.1",
     "sequelize": "^3.23.4"
-  }
+  },
+  "devDependencies": {},
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/redwolf98/Giftology.git"
+  },
+  "bugs": {
+    "url": "https://github.com/redwolf98/Giftology/issues"
+  },
+  "homepage": "https://github.com/redwolf98/Giftology#readme"
 }
