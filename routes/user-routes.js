@@ -33,7 +33,7 @@ modules.exports = function(app){
 
     app.post("/user", function(req,res){
 
-        db.user.
+      
 
     });
 
