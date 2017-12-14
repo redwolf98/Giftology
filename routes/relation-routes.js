@@ -1,6 +1,6 @@
 var db = require("../models");
 
-modules.exports = function(app){
+module.exports = function(app){
 
     app.get("/people", function(req,res){
         db.user.findAll({
