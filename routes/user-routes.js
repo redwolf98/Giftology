@@ -1,6 +1,6 @@
 var db = require("../models");
 
-modules.exports = function(app){
+module.exports = function(app){
 
     app.get("/login", function(req,res){
         db.user.findOne({
@@ -33,7 +33,12 @@ modules.exports = function(app){
 
     app.post("/user", function(req,res){
 
-      
+        db.user.create({
+            firstName: req.body.firstName,
+            lastName: req.body.lastName,
+            email: req.body.email,
+            password: req.body.password
+        });
 
     });
 
