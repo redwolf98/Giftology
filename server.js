@@ -21,16 +21,6 @@ app.set('views', path.join(__dirname, 'views'));
 app.set('view engine', 'ejs');;
 
 
-// app.use(function(){
-//   if(userID == null){
-    
-//   }else{
-
-//   }
-// })
-
-// app.use('/', index);
-// app.use("/create", routes);
 
 require("./routes/user-routes")(app);
 require("./routes/relation-routes")(app);
