@@ -21,7 +21,9 @@ modules.exports = function(app){
             image_url: req.body.image_url,
             web_url: req.body.web_url
         }).then(
-
+            function(data){
+                res.status(200).send(data);
+            }
         );
     });
 
@@ -34,14 +36,18 @@ modules.exports = function(app){
             image_url: req.body.image_url,
             web_url: req.body.web_url
         }).then(
-
+            function(){
+                res.status(200).send('ok');
+            }
         );
     });
 
     app.delete('/gift', function(req, res) {
         db.gift.destroy({
             where: {id:req.body.id}
-        }).then();
+        }).then(function(){
+            res.status(200).send("ok");
+        });
     });
 
 };

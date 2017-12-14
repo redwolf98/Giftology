@@ -7,7 +7,9 @@ modules.exports = function(app){
             where: {
                 id: req.body.id
             }
-        }).then();
+        }).then(function(data){
+            res.send(data);
+        });
     });
 
     app.post("/people", function(req,res){
@@ -17,7 +19,11 @@ modules.exports = function(app){
             password: req.body.password,
             email: req.body.email,
             photo_url: req.body.photo_url
-        }).then();
+        }).then(
+            function(data){
+                res.status(200).send(data);
+            }
+        );
     });
 
     app.put('/people', function(req, res) {
@@ -32,11 +38,17 @@ modules.exports = function(app){
             {
                 where:{
                 id: req.body.id
-        }}).then();
+        }}).then(
+            function(){
+                res.status(200).send("ok");
+            }
+        );
     });
 
     app.delete('/people', function(req, res) {
-        
+        db.user.destroy({where:{id: req.body.id}}).then(function(){
+            res.status(200).send('ok');
+        });
     });
 
 };
