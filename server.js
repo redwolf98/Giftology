@@ -32,6 +32,12 @@ app.use(function(){
 app.use('/', index);
 // app.use("/create", routes);
 
+require("./routes/user-routes")(app);
+require("./routes/relation-routes")(app);
+require("./routes/gift_routes")(app);
+
+
+
 
 // listen on port 3000
 var port = process.env.PORT || 3000;
