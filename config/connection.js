@@ -10,7 +10,7 @@ if(process.env.JAWSDB_URL){
       port: 3306,
       host: "localhost",
       user: "root",
-      password: confidential.password,
+      password: "root",
       database: "db_giftology"
     });
 }
@@ -18,6 +18,3 @@ if(process.env.JAWSDB_URL){
 connection.connect();
 
 module.exports = connection;
-
-
-  

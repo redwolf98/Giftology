@@ -1,6 +1,6 @@
 var db = require("../models");
 
-modules.exports = function(app){
+module.exports = function(app){
 
     app.get("/gift", function(req,res){
         db.gift.findAll({

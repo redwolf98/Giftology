@@ -1,9 +1,10 @@
-var express = require("express");
+var express    = require("express");
 var bodyParser = require("body-parser");
-var path = require("path");
-var engine = require('ejs-mate');
-var index = require('./routes/index');
-var userID = null;
+var path       = require("path");
+var engine     = require('ejs-mate');
+var index      = require('./routes/index');
+var userID     = null;
+
 // bring in the models
 var db = require("./models");
 
@@ -35,8 +36,6 @@ app.use('/', index);
 require("./routes/user-routes")(app);
 require("./routes/relation-routes")(app);
 require("./routes/gift_routes")(app);
-
-
 
 
 // listen on port 3000
