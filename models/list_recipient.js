@@ -26,6 +26,11 @@ var List_Recipient = sequelize.define("list_recipient",{
     haveSentEmail:{
         type: DataTypes.BOOLEAN
     }
+},
+{
+    timestamps: false,
+    freezeTableName: true,
+    tableName:"list_recipient"
 });
   return List_Recipient;  
 };

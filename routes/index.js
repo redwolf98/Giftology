@@ -3,13 +3,16 @@ var router = express.Router();
 const db = require("../models");
 
 router.get('/', function (req, res, next) {
+    console.log("rendering signup");
     res.render('signup', {});
 });
 
 router.get('/home', function (req, res, next) {
+    console.log("rendering home");
     res.render('home', {});
 });
 
+<<<<<<< HEAD
 router.get('/people', function (req, res, next) {
     res.render('people', {});
 });
@@ -107,5 +110,7 @@ router.post("/relation", function(req, res){
 // }).then();
 
 
+=======
+>>>>>>> 0c582ef00a363ebf1bdf8b4852314241ccad0ac5
 
 module.exports = router;
