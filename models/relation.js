@@ -28,6 +28,11 @@ module.exports = function(sequelize, DataTypes){
         photo_url:{
             type:DataTypes.STRING
         }
+    },
+    {
+        timestamps: false,
+        freezeTableName: true,
+        tableName:"relation"
     });
 
  return Relation;
