@@ -1,3 +1,4 @@
+var connection = require('../config/connection');
 var express = require('express');
 
 const db = require("../models");
@@ -12,8 +13,36 @@ module.exports = function (app) {
         console.log(req.body);
         res.redirect("/home");
     });
-    app.post('/login', authenticateController.authenticate, function (req, res) {
-        res.redirect("/home");
+    app.post('/login', function (req, res) {
+        var email = req.body.email;
+        var password = req.body.password;
+        let status = false;
+        let message;
+        connection.query('SELECT * FROM user WHERE email = ?', [email], function (error, results, fields) {
+            if (error) {
+                message = 'there is some error with query'
+            } else {
+                if (results.length > 0) {
+                    if (password == results[0].password) {
+                        status = true;
+                    } else {
+                        message = "Email and password do not match";
+                    }
+                } else {
+                    message = "Email does not exist";
+                }
+            }
+            if (status) {
+                res.redirect("/home");
+            } else {
+                res.render("login", {
+                    message: message
+                });
+            }
+
+        });
+
+
     });
 
 
