@@ -1,0 +1,142 @@
+
+<!DOCTYPE html>
+<html lang="en">
+
+  <head>
+
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+
+
+    <title>Giftology</title>
+
+    <!-- Bootstrap CSS -->
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-beta.2/css/bootstrap.min.css" integrity="sha384-PsH8R72JQ3SOdhVi3uxftmaW6Vc51MKb0q5P2rRUpPvrszuE4W1povHYgTpBfshb" crossorigin="anonymous">
+
+    <!-- Custom styles -->
+    <link href="assets/style.css" rel="stylesheet">
+
+  </head>
+
+  <body>
+
+    <!-- Navigation -->
+    <nav class="navbar navbar-expand-lg navbar-dark bg-dark fixed-top">
+      <div class="container">
+        <a class="navbar-brand" href="#"><img src="assets/images/giftLogo.png" height="50 px"></a>
+
+        <div class="collapse navbar-collapse" id="navbarResponsive">
+          <ul class="navbar-nav ml-auto">
+            <li class="nav-item active">
+              <a class="nav-link" href="index.html">Home
+                <span class="sr-only">(current)</span>
+              </a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" href="#">My People</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" href="#">My Gifts</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" href="#">My Profile</a>
+            </li>
+          </ul>
+        </div>
+      </div>
+    </nav>
+
+
+
+<div class="row">
+    <div class="col-sm-3"></div>
+      <div class="col-sm-6">
+<div class="card text-center">
+<div class="card-body">
+  <h3>Welcome to Giftology!</h3>
+<form class="form-horizontal" role="form" method="post" action="/signup" onSubmit="return checkblank(this);" >
+<!-- <% if (message.length > 0) { %>
+<div class="alert alert-success col-sm-12">
+<%= message %>
+</div>
+<% } %> -->
+<div id="signupalert" style="display:none" class="alert alert-danger">
+  <p>Error:</p>
+  <span></span>
+</div>
+
+<div class="form-group">
+  <label for="first_name" class="col-md-3 control-label"></label>
+  <div class="col-md-9">
+      <input type="text" class="form-control" name="first_name" placeholder="First Name">
+  </div>
+</div>
+<div class="form-group">
+  <label for="last_name" class="col-md-3 control-label"></label>
+  <div class="col-md-9">
+      <input type="text" class="form-control" name="last_name" placeholder="Last Name">
+  </div>
+</div>
+<div class="form-group">
+  <label for="email" class="col-md-3 control-label"></label>
+  <div class="col-md-9">
+      <input type="email" class="form-control" name="email" placeholder="Email">
+  </div>
+</div>
+
+<div class="form-group">
+  <label for="password" class="col-md-3 control-label"></label>
+  <div class="col-md-9">
+      <input type="password" class="form-control" name="password" placeholder="Password">
+  </div>
+</div>
+
+<div class="form-group">
+  <!-- Button -->
+  <div class="col-md-offset-3 col-md-9">
+      <button id="btn-signup" type="submit" class="btn btn-info">
+          <i class="icon-hand-right"></i>&nbsp;Sign Up&nbsp;</button> &nbsp;&nbsp;&nbsp;
+
+          <button id="btn-signup" type="submit" class="btn btn-info">
+              <i class="icon-hand-right"></i>&nbsp;Log In&nbsp;</button>
+
+
+
+
+
+
+
+<!--piece from original code???!-->
+<!-- <div class="panel-title">Sign Up</div>
+<div style="float:right; font-size: 85%; position: relative; top:-10px">
+<a id="signinlink" href="/">Sign In</a>
+</div>                                 -->
+
+
+
+
+
+  </div>
+</div>
+</form>
+</div>
+</div>
+</div>
+<div class="col-sm-3"></div>
+</div>
+
+
+
+
+
+
+
+
+
+</div>
+
+</div>
+
+
+</div>
+</div>
