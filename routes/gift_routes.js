@@ -15,9 +15,10 @@ module.exports = function (app) {
 
     app.post("/gift", function (req, res) {
         db.gift.create({
-            userID: req.body.userID,
+            userID: req.mySession.userID,
             relationID: req.body.relationID,
             name: req.body.name,
+            price: req.body.price,
             description: req.body.description,
             image_url: req.body.image_url,
             web_url: req.body.web_url
@@ -34,6 +35,7 @@ module.exports = function (app) {
             relationID: req.body.relationID,
             name: req.body.name,
             description: req.body.description,
+            price: req.body.price,
             image_url: req.body.image_url,
             web_url: req.body.web_url
         }).then(
