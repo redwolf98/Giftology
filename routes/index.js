@@ -145,7 +145,6 @@ module.exports = function (app) {
         // });
     });
 
-<<<<<<< HEAD
 
     app.post('/people', function (req, res) {
         console.log("posting person")
@@ -197,12 +196,10 @@ module.exports = function (app) {
     //     });
     // });
 
-}
-=======
+
     app.get('/shopping', function (req, res, next) {
         console.log("rendering shopping");
         res.render('shopping', {});
     });
 
 }
->>>>>>> 5a966c254a92dde4c2f4a5b54c8bda9a1fec0362
