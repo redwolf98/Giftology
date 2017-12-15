@@ -2,7 +2,6 @@ var db = require("../models");
 
 module.exports = function (app) {
 
-
     app.get("/myPeople", function(req,res){
         console.log("redirecting to people page");
 
@@ -13,6 +12,7 @@ module.exports = function (app) {
 
         }).then(function(data){
             res.render("people",data);
+
         });
     });
 
