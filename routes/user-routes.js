@@ -10,10 +10,20 @@ module.exports = function (app) {
             }
         }).then(
             function (data) {
-                if (data.length > 0) {
+                if (data.length == 0) {
                     res.status(404).end();
-                } else {
-                    res.render("index", data[0].id);
+
+                }else{
+                    req.mySession.user = {
+                        id: data[0].id,
+                        firstName: data[0].firstName,
+                        lastName: data[0].lastName,
+                        email: data[0].email,
+                        photo_url: data[0].photo_url
+                    };
+
+                    res.render("home");
+
                 }
             }
         )
