@@ -34,10 +34,9 @@ $.ajax({
 var walmartURL   = "http://api.walmartlabs.com/v1/search?apiKey=5tqpb7skr82fputft42hqt7e&query=";
 var gift;
 
-
 //Click event listener on .walmart-btn class
 $(".walmart-btn").on("click", () => {
-
+    
     //Reference #product-input
     var productInput = $("#product-input").val().trim().toLowerCase();
 
@@ -126,7 +125,7 @@ function Walmart(queryURL, product) {
                     console.log($(checkboxes[x]).attr("relation-id"));
 
                     $.post("/gift", gift, function(){
-                        
+
                     });
                 }
             }

@@ -1,61 +1,17 @@
 <% layout('layout') -%>
-
+<div class="container">
     <div class="row">
-        <div class="col-sm-3"></div>
-        <div class="col-sm-6">
-            <div class="card text-center">
-                <div class="card-body">
-                    <h3>Making a List</h3>
-                    <form class="form-horizontal" role="form" method="post" action="/people" onSubmit="return checkblank(this);">
-                        <% if (message && message.length > 0) { %>
-                            <div class="alert alert-danger col-sm-12">
-                                <%= message %>
-                            </div>
-                            <% } %>
-                                <div id="signupalert" style="display:none" class="alert alert-danger">
-                                    <p>Error:</p>
-                                    <span></span>
-                                </div>
-
-                                <div class="form-group">
-                                    <label for="first_name" class="col-md-3 control-label"></label>
-                                    <div class="col-md-9">
-                                        <input type="text" class="form-control" name="first_name" placeholder="First Name">
-                                    </div>
-                                </div>
-                                <div class="form-group">
-                                    <label for="last_name" class="col-md-3 control-label"></label>
-                                    <div class="col-md-9">
-                                        <input type="text" class="form-control" name="last_name" placeholder="Last Name">
-                                    </div>
-                                </div>
-                                <div class="form-group">
-                                    <label for="relationship" class="col-md-3 control-label"></label>
-                                    <div class="col-md-9">
-                                        <input type="text" class="form-control" name="realtionship" placeholder="Relationship">
-                                    </div>
-                                </div>
-
-                                <div class="form-group">
-                                    <label for="birthdate" class="col-md-3 control-label"></label>
-                                    <div class="col-md-9">
-                                        <input type="text" class="form-control" name="birthdate" placeholder="Birthdate">
-                                    </div>
-                                </div>
-
-                                <div class="form-group">
-                                    <!-- Button -->
-                                    <div class="col-md-offset-3 col-md-9">
-                                        <button id="btn-add" type="submit" class="btn btn-info">
-                                            <i class="icon-hand-right"></i>&nbsp;&nbsp;Add Another Person</button> &nbsp;&nbsp;&nbsp;
-                                        <button id="btn-view" type="submit" class="btn btn-info">
-                                            <i class="icon-hand-right"></i>&nbsp;&nbsp;View List</button> &nbsp;&nbsp;&nbsp;
-                                        <!-- piece from original code???!-->
-                                        <!-- <div class="panel-title">Sign Up</div> -->
-                                    </div>
-                                </div>
-                </div>
+        <div class="col-6">
+            <div class="list-group" style="margin: 30px; width: 100%;">
+                <button type="button" class="list-group-item list-group-item-action active" style="background-color:#39BBA5; border: 1px solid black;" disabled>Your People</button>
+                <button type="button" class="list-group-item list-group-item-action">Dapibus ac facilisis in</button>
+                <button type="button" class="list-group-item list-group-item-action">Morbi leo risus</button>
+                <button type="button" class="list-group-item list-group-item-action">Porta ac consectetur ac</button>
+                <button type="button" class="list-group-item list-group-item-action">Vestibulum at eros</button>
             </div>
-            </form>
+        </div>
+        <div class="col-6">
+                <a type="button" class="add-people" href="/addPerson" style="margin: 30px; height: 50px; padding-left: 10px; padding-right: 10px;text-decoration: none; text-align: center; color: white; background-color:#343A3F; border: 1px solid black;">Add </br> People</a>
         </div>
     </div>
+</div>

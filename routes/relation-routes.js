@@ -32,7 +32,7 @@ module.exports = function (app) {
     
 
     app.get("/addPerson",function(req,res){
-        res.render("addPerson");
+        res.render("addPerson", {message: ""});
     });
 
 
