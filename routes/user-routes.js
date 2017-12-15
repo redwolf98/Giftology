@@ -2,7 +2,8 @@ var db = require("../models");
 
 module.exports = function (app) {
 
-    app.get("/login", function (req, res) {
+    app.get("/user", function (req, res) {
+        console.log(req);
         db.user.findOne({
             where: {
                 email: req.body.email,

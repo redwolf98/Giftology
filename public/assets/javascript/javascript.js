@@ -5,6 +5,7 @@
 //Declare walmartURL
 var walmartURL   = "http://api.walmartlabs.com/v1/search?apiKey=5tqpb7skr82fputft42hqt7e&query=";
 
+
 //Click event listener on .walmart-btn class
 $(".walmart-btn").on("click", () => {
 

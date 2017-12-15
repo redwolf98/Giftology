@@ -22,22 +22,24 @@ app.use(sessions({
   activeDuration: 1000 * 60 * 5,
   secure: false // if expiresIn < activeDuration, the session will be extended by activeDuration milliseconds 
 }));
- 
+
+
 app.use(function(req,res,next){
-  if(req.mySession.user == null){
-    console.log("user is null");
-    next();
-  }else{
+  if(req.mySession.user){
     console.log(req.mySession.user);
     next();
+  }else{
+    console.log("user:null");
+    next();
   }
-  
-})
-
+});
+ 
 app.use('/login', function(req, res,next) {   // Allows access to login page
   if(!req.mySession.user){
-    res.send('displaying login page');   // before access token check
+    console.log("in use login");
+    next();   // before access token check
   }else{
+
     res.redirect('home');
   }
   
@@ -45,19 +47,11 @@ app.use('/login', function(req, res,next) {   // Allows access to login page
 
 app.use('/signup', function(req,res,next){
   if(!req.mySession.user){
-    res.send('display signup page');
+    next();
   }else{
     res.redirect('home');
   }
   
-});
-
-app.use(function(req, res, next) {       // Catches access to all other pages
-  if(!req.mySession.user) {       // requiring a valid access token
-      res.redirect('login');
-  } else {
-      next();
-  }
 });
 
 // parse application/x-www-form-urlencoded
