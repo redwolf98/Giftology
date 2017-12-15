@@ -69,6 +69,10 @@ module.exports = function (app) {
 
     });
 
+    app.get("/aboutUs", function(req,res){
+        console.log("redirecting to about us.");
+        res.render("aboutUs");
+    });
 
     app.get('/', function (req, res, next) {
 
@@ -83,7 +87,6 @@ module.exports = function (app) {
     });
 
 
-
     app.get('/home', function (req, res, next) {
         console.log("rendering home");
         res.render('home', {});
@@ -91,6 +94,11 @@ module.exports = function (app) {
     app.get('/people', function (req, res, next) {
         console.log("rendering people");
         res.render('people', {});
+    });
+
+    app.get('/shopping', function (req, res, next) {
+        console.log("rendering shopping");
+        res.render('shopping', {});
     });
 
     //return status(200) if email/password have match, status(404) if email/password doesn't exist

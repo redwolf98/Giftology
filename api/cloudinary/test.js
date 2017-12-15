@@ -1,26 +1,25 @@
-//console.log("Hi");
+//Giftology's URL to the cloudinary API
 var queryURL = "https://api.cloudinary.com/v1_1/dpu6ghtcb/image/upload";
 
-window.ajaxSuccess = function (response) {
-    console.log(response);
-    $("<img>").attr("src", response["secure_url"]).appendTo('#results');
-    $("<div>").addClass('response').text( JSON.stringify(response)).appendTo('#results');
-  }
-  
-  
-  $('#upload').submit(function(event){
-    event.preventDefault();
+//On submit
+$('#upload').submit(function(event){
+  event.preventDefault();
 
-    $.ajax({
-      url: queryURL,
-      type: 'POST',
-      data: new FormData(this),
-      processData: false,
-      contentType: false
-      }).done(ajaxSuccess)
-    .fail(function(msg){
-      console.error(msg);
-      $('#results').text(msg);
+  //Post file to the cloud
+  $.ajax({
+    url: queryURL,
+    type: 'POST',
+    data: new FormData(this),
+    processData: false,
+    contentType: false
+    })
+    //Success: Log response, url to the photo (store this URL in DB)
+    .done(response => {
+      console.log(response);
+      console.log(response.secure_url);
+    })
+    //Failure: Log the error
+    .fail(err => {
+      console.error(err);
     });
-    console.log(this);
-  });
+});
