@@ -69,6 +69,7 @@ background-color: #39BBA5;
     margin-right: auto;
  }
 
+<<<<<<< HEAD
 /* /Shopping scrollbar style*/
 .style-3::-webkit-scrollbar-track
 {
@@ -87,3 +88,7 @@ background-color: #39BBA5;
 {
 	background-color: #000000;
 }
+=======
+
+ .portrait-image{margin:0 auto;}
+>>>>>>> c2233bd02232820a9df6efbc0eaec0cf1627fc69
