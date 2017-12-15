@@ -36,7 +36,7 @@ function Walmart(queryURL, product) {
 
         //Iterate through products array
         for (var i = 0; i < products.numItems; i++) {
-            //Create a card
+            //Create a bootstrap card
             var holder = $("<div class = 'col-lg-3 col-md-6 mb-4'></div>");
             var card   = $("<div class = 'card'></div>");
             var cardImage  = $("<img class = 'card-img-top'></img>").attr("src", products.items[i].mediumImage);
@@ -45,7 +45,7 @@ function Walmart(queryURL, product) {
             var cardPrice  = $("<p class = 'card-price'></p>").html("$" + products.items[i].salePrice);
             var cardText   = $("<p class = 'card-text style-3'></p>").html(products.items[i].shortDescription);
             var cardFooter = $("<div class = 'card-footer'></div>");
-            var cardBtn    = $("<a class = 'btn btn-primary add-btn'></a>").html("Add to List");
+            var cardBtn    = $("<button class = 'btn btn-primary add-btn' data-toggle='modal' data-target='#myModal'></button>").html("Add to List");
 
             //Append correct elements
             cardBody.append(cardHeader, cardPrice, cardText);
@@ -53,9 +53,30 @@ function Walmart(queryURL, product) {
             card.append(cardImage, cardBody, cardFooter);
             holder.append(card);
 
+            //Add product properties as an attribute on the .add-btn (data is easily retrieved)
+            cardBtn.attr("product-name", products.items[i].modelNumber);
+            cardBtn.attr("product-img", products.items[i].mediumImage);
+            cardBtn.attr("product-price", products.items[i].salePrice);
+            cardBtn.attr("product-url", products.items[i].productUrl);
+            
             //Append to search-results div
             $("#search-results").append(holder);
         };
+
+        //Click event listener on .add-btn class (when the user adds a product)
+        $(".add-btn").on("click", function() {
+
+            //Create the product object with corresponding properties extracted from .add-btn attributes
+            var product = {
+                name: $(this).attr("product-name"),
+                image: $(this).attr("product-img"),
+                price: $(this).attr("product-price"),
+                url: $(this).attr("product-url")
+            }
+
+            //Log the product object
+            console.log(product);
+        });
         
     });
 }
