@@ -31,16 +31,18 @@ module.exports = function (app) {
     });
     
 
+    app.get("/addPerson",function(req,res){
+        res.render("addPerson");
+    });
 
-    app.post("/people", function (req, res) {
+
+    app.post("/addPerson", function (req, res) {
         module.exports = function (app) {
             app.post('/signup', function (req, res) {
                 var person = {
                     "firstName": req.body.first_name,
                     "lastName": req.body.last_name,
-                    "relationship": req.body.relationship,
-                    "birthDate": req.body.birthdate,
-
+                    "relationship": req.body.relationship
                 }
                 var message;
                 let status = false;
