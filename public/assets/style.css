@@ -37,11 +37,28 @@ border: none;
 
 .btn-info:hover, .btn-primary:hover {
 background-color: #39BBA5;
+cursor: pointer;
+}
+
+.add-btn {
+  color: white !important;
 }
 
 .text1 {
-    color: #343A3F;
-  }
+  color: #343A3F;
+}
+
+.card-img-top {
+  max-width: 180px;
+  max-height: 180px;
+  display: block;
+  margin: 0 auto;
+}
+
+.card-text {
+  max-height: 150px;
+  overflow: auto;
+}
 
 .list-group {
   width: 200px;
@@ -56,3 +73,24 @@ background-color: #39BBA5;
     margin-left: auto;
     margin-right: auto;
  }
+
+/* /Shopping scrollbar style*/
+.style-3::-webkit-scrollbar-track
+{
+  -webkit-box-shadow: inset 0 0 6px rgba(0,0,0,0.3);
+  box-shadow: inset 0 0 6px rgba(0,0,0,0.3);
+	background-color: #F5F5F5;
+}
+
+.style-3::-webkit-scrollbar
+{
+	width: 6px;
+	background-color: #F5F5F5;
+}
+
+.style-3::-webkit-scrollbar-thumb
+{
+	background-color: #000000;
+}
+
+ .portrait-image{margin:0 auto;}

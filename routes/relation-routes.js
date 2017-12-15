@@ -2,6 +2,7 @@ var db = require("../models");
 
 module.exports = function (app) {
 
+<<<<<<< HEAD
     // app.get("/people", function (req, res) {
     //     res.render('people', {
     //         message: ""
@@ -14,6 +15,21 @@ module.exports = function (app) {
     //     //     res.send(data);
     //     // });
     // });
+=======
+    app.get("/myPeople", function(req,res){
+        console.log("redirecting to people page");
+
+        db.user.findAll({
+            where: {
+                id: req.body.id
+            }
+
+        }).then(function(data){
+            res.render("people",data);
+
+        });
+    });
+>>>>>>> 5a966c254a92dde4c2f4a5b54c8bda9a1fec0362
 
     // app.post("/people", function (req, res) {
     //     module.exports = function (app) {

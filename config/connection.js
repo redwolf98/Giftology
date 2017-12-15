@@ -1,5 +1,4 @@
 var mysql = require("mysql");
-var confidential = require("./confidential");
 var connection;
 
 if (process.env.JAWSDB_URL) {

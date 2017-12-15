@@ -2,7 +2,8 @@ var db = require("../models");
 
 module.exports = function (app) {
 
-    app.get("/login", function (req, res) {
+    app.get("/user", function (req, res) {
+        console.log(req);
         db.user.findOne({
             where: {
                 email: req.body.email,
@@ -10,24 +11,20 @@ module.exports = function (app) {
             }
         }).then(
             function (data) {
-                if (data.length > 0) {
+                if (data.length == 0) {
                     res.status(404).end();
-                } else {
-                    res.render("index", data[0].id);
-                }
-            }
-        )
-    });
 
-    app.get("/user", function (req, res) {
-        res.render('profile');
-        db.user.findOne({
-            where: {
-                id: req.body.id
-            }
-        }).then(
-            function (data) {
-                res.send(data);
+                }else{
+                    req.mySession.user = {
+                        id: data[0].id,
+                        firstName: data[0].firstName,
+                        lastName: data[0].lastName,
+                        email: data[0].email,
+                        photo_url: data[0].photo_url
+                    };
+
+                    res.render("home");
+                }
             }
         )
     });

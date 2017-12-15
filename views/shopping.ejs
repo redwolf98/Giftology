@@ -3,83 +3,52 @@
     <div class="container">
 
         <!-- Header -->
-
         <form>
             <div class="form-group row">
-
                 <div class="col-8">
-                    <input class="form-control" type="text" value="" id="example-text-input">
+                    <input class="form-control" type="text" value="" id="product-input">
                 </div>
                 <div class="col-3">
-                    <button type="submit" class="btn btn-primary"> Find gifts </button>
+                    <button type="button" class="btn btn-primary walmart-btn"> Find gifts </button>
                 </div>
+            </div>
         </form>
         <br>
         <br>
         <br>
 
+        <!-- Search results appear here-->
+        <div id="search-results" class="row text center"></div>
 
-
-        <!-- Product return -->
-        <div class="row text-center">
-
-            <div class="col-lg-3 col-md-6 mb-4">
-                <div class="card">
-                    <img class="card-img-top" src="http://placehold.it/500x325" alt="">
-                    <div class="card-body">
-                        <h5 class="card-title">Product Name</h5>
-                        <p>Product Price</p>
-                        <p class="card-text">Description here</p>
-                    </div>
-                    <div class="card-footer">
-                        <a href="#" class="btn btn-primary">Add to List</a>
-                    </div>
+        <!-- Modal -->
+        <div class="modal fade" id="myModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+            <div class="modal-dialog" role="document">
+              <div class="modal-content">
+                <div class="modal-header">
+                  <h5 class="modal-title" id="exampleModalLabel">Select a contact to add item to list.</h5>
+                  <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                    <span aria-hidden="true">&times;</span>
+                  </button>
                 </div>
+                <div class="modal-body">
+                  <div class="list-group">
+              <a href="#" class="list-group-item list-group-item-action active">
+                My Gift List
+              </a>
+              <a href="#" class="list-group-item list-group-item-action">Mom</a>
+              <a href="#" class="list-group-item list-group-item-action">Dad</a>
+              <a href="#" class="list-group-item list-group-item-action">Grandma</a>
+              <a href="#" class="list-group-item list-group-item-action">Alison</a>
+              <a href="#" class="list-group-item list-group-item-action">Taylor</a>
+              <a href="#" class="list-group-item list-group-item-action">Seth</a>
+              <a href="#" class="list-group-item list-group-item-action">Christy</a>
             </div>
-
-            <div class="col-lg-3 col-md-6 mb-4">
-                <div class="card">
-                    <img class="card-img-top" src="http://placehold.it/500x325" alt="">
-                    <div class="card-body">
-                        <h5 class="card-title">Product Name</h5>
-                        <p>Product Price</p>
-                        <p class="card-text">Description here</p>
-                    </div>
-                    <div class="card-footer">
-                        <a href="#" class="btn btn-primary">Add to List</a>
-                    </div>
                 </div>
-            </div>
-
-            <div class="col-lg-3 col-md-6 mb-4">
-                <div class="card">
-                    <img class="card-img-top" src="http://placehold.it/500x325" alt="">
-                    <div class="card-body">
-                        <h5 class="card-title">Product Name</h5>
-                        <p>Product Price</p>
-                        <p class="card-text">Description here</p>
-                    </div>
-                    <div class="card-footer">
-                        <a href="#" class="btn btn-primary">Add to List</a>
-                    </div>
+                <div class="modal-footer">
+                  <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+                  <button type="button" class="btn btn-primary">Save changes</button>
                 </div>
+              </div>
             </div>
-
-            <div class="col-lg-3 col-md-6 mb-4">
-                <div class="card">
-                    <img class="card-img-top" src="http://placehold.it/500x325" alt="">
-                    <div class="card-body">
-                        <h5 class="card-title">Product Name</h5>
-                        <p>Product Price</p>
-                        <p class="card-text">Description here</p>
-                    </div>
-                    <div class="card-footer">
-                        <a href="#" class="btn btn-primary">Add to List</a>
-                    </div>
-                </div>
-            </div>
-
-        </div>
-
-
-        </div>
+          </div>
+    </div>
