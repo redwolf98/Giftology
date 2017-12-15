@@ -3,7 +3,7 @@ var bodyParser = require("body-parser");
 var path       = require("path");
 var engine     = require('ejs-mate');
 var index      = require('./routes/index');
-var sessions    = require('client-sessions');
+var sessions   = require('client-sessions');
 var userID     = null;
 
 // bring in the models

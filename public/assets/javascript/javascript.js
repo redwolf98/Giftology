@@ -2,8 +2,37 @@
 //if this field is not populated then all calls through the app should send the user back to the login page
 //var userID = null;
 
+//Retrieve people from database (AJAX GET method)
+//...
+$.ajax({
+    url: "/relation",
+    method: "GET"
+})
+.done(res => {
+    //Log the result
+    console.log(res);
+
+    $(".people-list").empty();
+    //Iterate through the response array
+    for(var a = 0; a < res.length; a++) {
+        //Create a list item for each person in the database when response is received
+        var listItem = $("<li>");
+        var personBadge = $("<span class = 'badge badge-success'>").html(res[a].firstName + " " + res[a].lastName);
+        var checkBox = $("<input class = 'checkBox' type = 'checkBox' >");
+
+        //Update attributes (references position in array)
+        checkBox.attr("person-number", a);
+        checkBox.attr("relation-id", res[a].id);
+
+        //Append elements
+        listItem.append(personBadge, checkBox);
+        $(".people-list").append(listItem);
+    }
+});
+
 //Declare walmartURL
 var walmartURL   = "http://api.walmartlabs.com/v1/search?apiKey=5tqpb7skr82fputft42hqt7e&query=";
+var gift;
 
 
 //Click event listener on .walmart-btn class
@@ -59,6 +88,7 @@ function Walmart(queryURL, product) {
             cardBtn.attr("product-img", products.items[i].mediumImage);
             cardBtn.attr("product-price", products.items[i].salePrice);
             cardBtn.attr("product-url", products.items[i].productUrl);
+            cardBtn.attr("product-desc", products.items[i].shortDescription);
             
             //Append to search-results div
             $("#search-results").append(holder);
@@ -68,16 +98,38 @@ function Walmart(queryURL, product) {
         $(".add-btn").on("click", function() {
 
             //Create the product object with corresponding properties extracted from .add-btn attributes
-            var product = {
+            gift = {
                 name: $(this).attr("product-name"),
-                image: $(this).attr("product-img"),
+                image_url: $(this).attr("product-img"),
                 price: $(this).attr("product-price"),
-                url: $(this).attr("product-url")
+                web_url: $(this).attr("product-url"),
+                description: $(this).attr("product-desc")
             }
 
             //Log the product object
-            console.log(product);
+            console.log(gift);
+
+            //Modal update
+            $(".prod-img").attr("src", gift.image);
+            $(".prod-name").html(gift.name);
+
         });
-        
+
+         //When the user saves gifts to relation(s)
+        $(".gift-save").on("click", function() {
+            var checkboxes = $(".checkBox");
+            
+            //Iterate through all checkboxes
+            for (var x = 0; x < checkboxes.length; x++) {
+                if (checkboxes[x].checked) {
+                    gift.relationID = $(checkboxes[x]).attr("relationID");
+                    console.log($(checkboxes[x]).attr("relation-id"));
+
+                    $.post("/gift", gift, function(){
+                        
+                    });
+                }
+            }
+        });
     });
 }

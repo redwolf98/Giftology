@@ -44,6 +44,28 @@ cursor: pointer;
   color: white !important;
 }
 
+.badge {
+  width: 35%;
+  height: 20px;
+  margin: 5px;
+  background-color: #39BBA5;
+  border: 1px solid #343A3F;
+}
+
+.checkBox {
+  width: 18px;
+  height: 18px;
+}
+
+.modal-footer {
+  background-color: rgba(0,0,0,.03);
+}
+
+.modal-body {
+  max-height: 300px;
+  overflow: auto;
+}
+
 .text1 {
   color: #343A3F;
 }
@@ -84,7 +106,7 @@ cursor: pointer;
 
 .style-3::-webkit-scrollbar
 {
-	width: 6px;
+	width: 8px;
 	background-color: #F5F5F5;
 }
 
@@ -93,4 +115,9 @@ cursor: pointer;
 	background-color: #000000;
 }
 
- .portrait-image{margin:0 auto;}
+.style-3::-webkit-scrollbar-thumb:hover
+{
+	background-color: #39BBA5;
+}
+
+.portrait-image{margin:0 auto;}
