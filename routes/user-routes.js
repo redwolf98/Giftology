@@ -2,7 +2,8 @@ var db = require("../models");
 
 module.exports = function (app) {
 
-    app.get("/login", function (req, res) {
+    app.get("/user", function (req, res) {
+        console.log(req);
         db.user.findOne({
             where: {
                 email: req.body.email,
@@ -24,19 +25,6 @@ module.exports = function (app) {
 
                     res.render("home");
                 }
-            }
-        )
-    });
-
-    app.get("/user", function (req, res) {
-        res.render('profile');
-        db.user.findOne({
-            where: {
-                id: req.body.id
-            }
-        }).then(
-            function (data) {
-                res.send(data);
             }
         )
     });

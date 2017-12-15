@@ -1,35 +1,61 @@
 <% layout('layout') -%>
-<!-- Page Content -->
-<div class="container">
-    
-        <div class="row">
-          <div class="col-lg-12">
-            <h4>My People </h4>
-            <hr/>
-    
-            <div class="row">
-              <div class="col-lg-4">
-    
-                <div class="list-group">
-                  <ul class="list-group">
-                    <li class="list-group-item">Mom</li>
-                    <li class="list-group-item">Dad</li>
-                    <li class="list-group-item">Grandma</li>
-                    <li class="list-group-item">Alison</li>
-                    <li class="list-group-item">Taylor</li>
-                    <li class="list-group-item">Seth</li>
-                    <li class="list-group-item">Christy</li>
-                  </ul>
+
+    <div class="row">
+        <div class="col-sm-3"></div>
+        <div class="col-sm-6">
+            <div class="card text-center">
+                <div class="card-body">
+                    <h3>Making a List</h3>
+                    <form class="form-horizontal" role="form" method="post" action="/people" onSubmit="return checkblank(this);">
+                        <% if (message && message.length > 0) { %>
+                            <div class="alert alert-danger col-sm-12">
+                                <%= message %>
+                            </div>
+                            <% } %>
+                                <div id="signupalert" style="display:none" class="alert alert-danger">
+                                    <p>Error:</p>
+                                    <span></span>
+                                </div>
+
+                                <div class="form-group">
+                                    <label for="first_name" class="col-md-3 control-label"></label>
+                                    <div class="col-md-9">
+                                        <input type="text" class="form-control" name="first_name" placeholder="First Name">
+                                    </div>
+                                </div>
+                                <div class="form-group">
+                                    <label for="last_name" class="col-md-3 control-label"></label>
+                                    <div class="col-md-9">
+                                        <input type="text" class="form-control" name="last_name" placeholder="Last Name">
+                                    </div>
+                                </div>
+                                <div class="form-group">
+                                    <label for="relationship" class="col-md-3 control-label"></label>
+                                    <div class="col-md-9">
+                                        <input type="text" class="form-control" name="realtionship" placeholder="Relationship">
+                                    </div>
+                                </div>
+
+                                <div class="form-group">
+                                    <label for="birthdate" class="col-md-3 control-label"></label>
+                                    <div class="col-md-9">
+                                        <input type="text" class="form-control" name="birthdate" placeholder="Birthdate">
+                                    </div>
+                                </div>
+
+                                <div class="form-group">
+                                    <!-- Button -->
+                                    <div class="col-md-offset-3 col-md-9">
+                                        <button id="btn-add" type="submit" class="btn btn-info">
+                                            <i class="icon-hand-right"></i>&nbsp;&nbsp;Add Another Person</button> &nbsp;&nbsp;&nbsp;
+                                        <button id="btn-view" type="submit" class="btn btn-info">
+                                            <i class="icon-hand-right"></i>&nbsp;&nbsp;View List</button> &nbsp;&nbsp;&nbsp;
+                                        <!-- piece from original code???!-->
+                                        <!-- <div class="panel-title">Sign Up</div> -->
+                                    </div>
+                                </div>
                 </div>
-
-              </div>
             </div>
-    
-            <div class="row">
-                <img src="https://www.geeklog.net/forum/image_set/avatar.png" height="150px">
-            </div>
-
-          </div>
+            </form>
         </div>
     </div>
-</div>
