@@ -1,8 +1,6 @@
 var db = require("../models");
 
 module.exports = function(app){
-<<<<<<< HEAD
-=======
 
     app.get("/login", function(req,res){
         db.user.findOne({
@@ -20,7 +18,6 @@ module.exports = function(app){
             }
         )
     });
->>>>>>> 3f6c8161020f0745e26c0fa7a997c59ca74eabe5
 
     app.get("/user", function(req,res){
         db.user.findOne({
