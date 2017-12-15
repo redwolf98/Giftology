@@ -29,19 +29,6 @@ module.exports = function (app) {
         )
     });
 
-    app.get("/user", function (req, res) {
-        res.render('profile');
-        db.user.findOne({
-            where: {
-                id: req.body.id
-            }
-        }).then(
-            function (data) {
-                res.send(data);
-            }
-        )
-    });
-
     app.post("/user", function (req, res) {
 
         db.user.create({
