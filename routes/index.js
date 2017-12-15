@@ -52,7 +52,9 @@ module.exports = function (app) {
 
         );
     });
+    
     app.post('/login', function (req, res) {
+        console.log("Post login");
         var email = req.body.email;
         var password = req.body.password;
         let status = false;
@@ -86,9 +88,18 @@ module.exports = function (app) {
             }
 
         });
+    });
 
+    app.get("/logout",function(req,res){
+
+            console.log("logging out");
+            req.mySession.reset();
+            res.render("login",{
+                message: "Successfully Logged Out"
+            });
 
     });
+
 
     app.get("/aboutUs", function(req,res){
         console.log("redirecting to about us.");
@@ -100,6 +111,7 @@ module.exports = function (app) {
 
     app.get('/', function (req, res, next) {
         if(req.mySession.user){
+            
             res.redirect("home");
         }else{
             res.render('login', {
@@ -127,22 +139,6 @@ module.exports = function (app) {
     app.get('/shopping', function (req, res, next) {
         console.log("rendering shopping");
         res.render('shopping', {});
-    });
-
-    //return status(200) if email/password have match, status(404) if email/password doesn't exist
-    app.get("/login", function (req, res) {
-        db.user.findAll({
-            where: {
-                email: req.body.email,
-                password: req.body.password
-            }
-        }).then(function (results) {
-            if (results.length == 1) {
-                return res.status(404).end();
-            } else {
-                res.status(200).end();
-            }
-        });
     });
 
 }
