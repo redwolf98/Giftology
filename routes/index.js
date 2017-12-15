@@ -95,9 +95,6 @@ module.exports = function (app) {
         res.render("aboutUs");
     });
 
-
-
-
     app.get('/', function (req, res, next) {
         if(req.mySession.user){
             res.redirect("home");
@@ -108,12 +105,12 @@ module.exports = function (app) {
         }
         
     });
+
     app.get('/signup', function (req, res) {
         res.render("signup", {
             message: ""
         });
     });
-
 
     app.get('/home', function (req, res, next) {
         console.log("rendering home");

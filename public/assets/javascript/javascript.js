@@ -2,6 +2,33 @@
 //if this field is not populated then all calls through the app should send the user back to the login page
 //var userID = null;
 
+//Retrieve people from database (AJAX GET method)
+//...
+$.ajax({
+    url: "/mypeople",
+    method: "GET"
+})
+.done(res => {
+    //Log the result
+    console.log(res);
+
+    /*$(".people-list").empty();
+    //Iterate through the response array
+    for(var a = 0; a < 4; a++) {
+        //Create a list item for each person in the database when response is received
+        var listItem = $("<li>");
+        var personBadge = $("<span class = 'badge badge-success'>").html("Example");
+        var checkBox = $("<input class = 'checkBox' type = 'checkBox' >");
+
+        //Update attributes (references position in array)
+        checkBox.attr("person-number", a);
+
+        //Append elements
+        listItem.append(personBadge, checkBox);
+        $(".people-list").append(listItem);
+    }*/
+});
+
 //Declare walmartURL
 var walmartURL   = "http://api.walmartlabs.com/v1/search?apiKey=5tqpb7skr82fputft42hqt7e&query=";
 
@@ -79,6 +106,17 @@ function Walmart(queryURL, product) {
 
             $(".prod-img").attr("src", product.image);
             $(".prod-name").html(product.name);
+
+        });
+
+        //When the user saves gifts to relation(s)
+        $(".gift-save").on("click", function() {
+            var checkboxes = $(".checkBox");
+            
+            //Iterate through all checkboxes
+            for (var x = 0; x < checkboxes.length; x++) {
+                if (checkboxes[x].checked) console.log("Add gift to person: " + x);
+            }
         });
         
     });

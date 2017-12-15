@@ -52,7 +52,7 @@ cursor: pointer;
   border: 1px solid #343A3F;
 }
 
-#checkBox {
+.checkBox {
   width: 18px;
   height: 18px;
 }
