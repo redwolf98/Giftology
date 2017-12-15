@@ -3,8 +3,7 @@ var express = require('express');
 
 const db = require("../models");
 
-// var authenticateController = require('../controllers/authenticate-controller');
-// var signUpController = require('../controllers/signUp-controller');
+
 
 
 module.exports = function (app) {
@@ -114,16 +113,15 @@ module.exports = function (app) {
             message: ""
         });
     });
-    // app.post('/signup', function (req, res) {
-    //     console.log("app.post/signup");
-    //     console.log(req.body);
-    //     res.redirect("/home");
 
-    // });
 
     app.get('/home', function (req, res, next) {
         console.log("rendering home");
         res.render('home', {});
+    });
+    app.get('/people', function (req, res, next) {
+        console.log("rendering people");
+        res.render('people', {});
     });
 
     app.get('/shopping', function (req, res, next) {

@@ -26,12 +26,36 @@ function Walmart(queryURL, product) {
         //Solution: Set dataType: 'jsonp', crossDomain: true
     $.ajax({
         //Set AJAX properties
-        url: queryURL + product,
+        url: queryURL + product + "&numItems=4",
         method: 'GET',
         dataType: 'jsonp',
         crossDomain: true
-    }).done( response => {
-        //Log response
-        console.log(response);
+    }).done( products => {
+        //Clear the search-results div
+        $("#search-results").empty();
+
+        //Iterate through products array
+        for (var i = 0; i < products.numItems; i++) {
+            //Create a card
+            var holder = $("<div class = 'col-lg-3 col-md-6 mb-4'></div>");
+            var card   = $("<div class = 'card'></div>");
+            var cardImage  = $("<img class = 'card-img-top'></img>").attr("src", products.items[i].mediumImage);
+            var cardBody   = $("<div class = 'card-body'></div>");
+            var cardHeader = $("<h5 class = 'card-title'></h5>").html(products.items[i].modelNumber);
+            var cardPrice  = $("<p class = 'card-price'></p>").html("$" + products.items[i].salePrice);
+            var cardText   = $("<p class = 'card-text style-3'></p>").html(products.items[i].shortDescription);
+            var cardFooter = $("<div class = 'card-footer'></div>");
+            var cardBtn    = $("<a class = 'btn btn-primary add-btn'></a>").html("Add to List");
+
+            //Append correct elements
+            cardBody.append(cardHeader, cardPrice, cardText);
+            cardFooter.append(cardBtn);
+            card.append(cardImage, cardBody, cardFooter);
+            holder.append(card);
+
+            //Append to search-results div
+            $("#search-results").append(holder);
+        };
+        
     });
 }
