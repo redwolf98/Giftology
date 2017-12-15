@@ -69,6 +69,7 @@ CREATE TABLE IF NOT EXISTS gift(
     relationID INT NOT NULL,
     name VARCHAR(1000) NOT NULL,
     description VARCHAR(1000) NOT NULL,
+    price DECIMAL (9,2) NOT NULL,
     image_url VARCHAR(1000) NULL,
     web_url VARCHAR(1000) NOT NULL,
     hasBeenBought BOOLEAN DEFAULT false,
