@@ -1,18 +1,22 @@
 var db = require("../models");
 
-module.exports = function(app){
+module.exports = function (app) {
 
-    app.get("/people", function(req,res){
+
+    app.get("/myPeople", function(req,res){
+        console.log("redirecting to people page");
+
         db.user.findAll({
             where: {
                 id: req.body.id
             }
+
         }).then(function(data){
-            res.send(data);
+            res.render("people",data);
         });
     });
 
-    app.post("/people", function(req,res){
+    app.post("/people", function (req, res) {
         db.user.create({
             firstName: req.body.firstName,
             lastName: req.body.lastName,
@@ -20,33 +24,36 @@ module.exports = function(app){
             email: req.body.email,
             photo_url: req.body.photo_url
         }).then(
-            function(data){
+            function (data) {
                 res.status(200).send(data);
             }
         );
     });
 
-    app.put('/people', function(req, res) {
-        db.user.update(
-            {
-                firstName: req.body.firstName,
-                lastName: req.body.lastName,
-                password: req.body.password,
-                email: req.body.email,
-                photo_url: req.body.photo_url
-            },
-            {
-                where:{
+    app.put('/people', function (req, res) {
+        db.user.update({
+            firstName: req.body.firstName,
+            lastName: req.body.lastName,
+            password: req.body.password,
+            email: req.body.email,
+            photo_url: req.body.photo_url
+        }, {
+            where: {
                 id: req.body.id
-        }}).then(
-            function(){
+            }
+        }).then(
+            function () {
                 res.status(200).send("ok");
             }
         );
     });
 
-    app.delete('/people', function(req, res) {
-        db.user.destroy({where:{id: req.body.id}}).then(function(){
+    app.delete('/people', function (req, res) {
+        db.user.destroy({
+            where: {
+                id: req.body.id
+            }
+        }).then(function () {
             res.status(200).send('ok');
         });
     });
