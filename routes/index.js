@@ -142,64 +142,9 @@ module.exports = function (app) {
         // });
     });
 
-<<<<<<< HEAD
-
-    app.post('/people', function (req, res) {
-        console.log("posting person")
-        var person = {
-            "firstName": req.body.first_name,
-            "lastName": req.body.last_name,
-            "relationhip": req.body.relationship,
-            "birthDate": req.body.birthdate,
-
-        }
-        var message;
-        let status = false;
-        connection.query('INSERT INTO relation SET ?', person, function (error, results, fields) {
-                if (error) {
-
-                    message: 'there is some error with query'
-                }
-                else {
-                    status = true;
-                    message: 'person added sucessfully'
-                };
-                if (status) {
-                    res.redirect('/people-list');
-                } else {
-                    res.render('people', {
-                        message: message
-                    })
-                }
-            }
-
-        );
-    });
-
-
-
-    //return status(200) if email/password have match, status(404) if email/password doesn't exist
-    // app.get("/login", function (req, res) {
-    //     db.user.findAll({
-    //         where: {
-    //             email: req.body.email,
-    //             password: req.body.password
-    //         }
-    //     }).then(function (results) {
-    //         if (results.length == 1) {
-    //             return res.status(404).end();
-    //         } else {
-    //             res.status(200).end();
-    //         }
-    //     });
-    // });
-
-}
-=======
     app.get('/shopping', function (req, res, next) {
         console.log("rendering shopping");
         res.render('shopping', {});
     });
 
 }
->>>>>>> 5a966c254a92dde4c2f4a5b54c8bda9a1fec0362
