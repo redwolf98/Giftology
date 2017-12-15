@@ -93,10 +93,14 @@ module.exports = function (app) {
 
     // });
 
-
     app.get('/home', function (req, res, next) {
         console.log("rendering home");
         res.render('home', {});
+    });
+
+    app.get('/shopping', function (req, res, next) {
+        console.log("rendering shopping");
+        res.render('shopping', {});
     });
 
     //return status(200) if email/password have match, status(404) if email/password doesn't exist
