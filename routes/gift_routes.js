@@ -14,11 +14,16 @@ module.exports = function (app) {
     });
 
     app.post("/gift", function (req, res) {
+        console.log("Post Gift");
+        console.log(req.mySession);
+        console.log("RelationID: " + req.body.relationID);
+        console.log("Price: " + req.body.price);
+
         db.gift.create({
-            userID: req.mySession.userID,
-            relationID: req.body.relationID,
+            userID: req.mySession.user.id,
+            relationID: parseInt(req.body.relationID),
             name: req.body.name,
-            price: req.body.price,
+            price: parseFloat(req.body.price),
             description: req.body.description,
             image_url: req.body.image_url,
             web_url: req.body.web_url

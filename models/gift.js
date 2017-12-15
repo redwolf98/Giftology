@@ -19,10 +19,16 @@ module.exports = function(sequelize, DataTypes){
         name:{
             type: DataTypes.STRING
         },
+        price:{
+            type:DataTypes.DECIMAL
+        },
         description:{
             type: DataTypes.STRING
         },
         image_url:{
+            type: DataTypes.STRING
+        },
+        web_url:{
             type: DataTypes.STRING
         }
     },
