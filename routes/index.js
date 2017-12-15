@@ -3,15 +3,40 @@ var express = require('express');
 
 const db = require("../models");
 
-var authenticateController = require('../controllers/authenticate-controller');
-var signUpController = require('../controllers/signUp-controller');
+// var authenticateController = require('../controllers/authenticate-controller');
+// var signUpController = require('../controllers/signUp-controller');
 
 
 module.exports = function (app) {
-    app.post('/signup', signUpController.signUp, function (req, res) {
-        console.log("app.post/signup");
-        console.log(req.body);
-        res.redirect("/home");
+    app.post('/signup', function (req, res) {
+        var user = {
+            "firstName": req.body.first_name,
+            "lastName": req.body.last_name,
+            "email": req.body.email,
+            "password": req.body.password,
+
+        }
+        var message;
+        let status = false;
+        connection.query('INSERT INTO user SET ?', user, function (error, results, fields) {
+                if (error) {
+
+                    message: 'there is some error with query'
+                }
+                else {
+                    status = true;
+                    message: 'user registered sucessfully'
+                };
+                if (status) {
+                    res.redirect('/home');
+                } else {
+                    res.render('signup', {
+                        message: message
+                    })
+                }
+            }
+
+        );
     });
     app.post('/login', function (req, res) {
         var email = req.body.email;
@@ -61,12 +86,12 @@ module.exports = function (app) {
             message: ""
         });
     });
-    app.post('/signup', function (req, res) {
-        console.log("app.post/signup");
-        console.log(req.body);
-        res.redirect("/home");
+    // app.post('/signup', function (req, res) {
+    //     console.log("app.post/signup");
+    //     console.log(req.body);
+    //     res.redirect("/home");
 
-    });
+    // });
 
 
     app.get('/home', function (req, res, next) {
