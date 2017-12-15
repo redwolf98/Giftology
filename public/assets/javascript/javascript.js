@@ -110,7 +110,7 @@ function Walmart(queryURL, product) {
             console.log(gift);
 
             //Modal update
-            $(".prod-img").attr("src", gift.image);
+            $(".prod-img").attr("src", gift.image_url);
             $(".prod-name").html(gift.name);
 
         });
@@ -126,7 +126,7 @@ function Walmart(queryURL, product) {
                     console.log($(checkboxes[x]).attr("relation-id"));
 
                     $.post("/gift", gift, function(){
-                        
+
                     });
                 }
             }
