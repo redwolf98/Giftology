@@ -45,6 +45,10 @@ module.exports = function (app) {
 
     });
 
+    app.get("/aboutUs", function(req,res){
+        console.log("redirecting to about us.");
+        res.render("aboutUs");
+    });
 
     app.get('/', function (req, res, next) {
 
