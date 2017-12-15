@@ -76,6 +76,9 @@ function Walmart(queryURL, product) {
 
             //Log the product object
             console.log(product);
+
+            $(".prod-img").attr("src", product.image);
+            $(".prod-name").html(product.name);
         });
         
     });

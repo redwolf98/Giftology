@@ -3,7 +3,7 @@ var bodyParser = require("body-parser");
 var path       = require("path");
 var engine     = require('ejs-mate');
 var index      = require('./routes/index');
-var sessions    = require('client-sessions');
+var sessions   = require('client-sessions');
 var userID     = null;
 
 // bring in the models
@@ -52,13 +52,13 @@ app.use('/signup', function(req,res,next){
   
 });
 
-app.use(function(req, res, next) {       // Catches access to all other pages
+/*app.use(function(req, res, next) {       // Catches access to all other pages
   if(!req.mySession.user) {       // requiring a valid access token
       res.redirect('login');
   } else {
       next();
   }
-});
+});*/
 
 // parse application/x-www-form-urlencoded
 app.use(bodyParser.urlencoded({

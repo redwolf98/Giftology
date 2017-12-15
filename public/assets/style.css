@@ -44,6 +44,24 @@ cursor: pointer;
   color: white !important;
 }
 
+.badge {
+  width: 35%;
+  height: 20px;
+  margin: 5px;
+  background-color: #39BBA5;
+  border: 1px solid #343A3F;
+}
+
+#checkBox {
+  width: 18px;
+  height: 18px;
+}
+
+.modal-body {
+  max-height: 300px;
+  overflow: auto;
+}
+
 .text1 {
   color: #343A3F;
 }
