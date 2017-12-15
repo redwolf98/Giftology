@@ -12,6 +12,10 @@ module.exports = function (app) {
             function (data) {
                 if (data.length == 0) {
                     res.status(404).end();
+<<<<<<< HEAD
+<<<<<<< HEAD
+=======
+>>>>>>> 3ffd36754db7f22e87cf3ac2edbb3a9f276bb4aa
 
                 }else{
                     req.mySession.user = {
@@ -22,8 +26,16 @@ module.exports = function (app) {
                         photo_url: data[0].photo_url
                     };
 
+<<<<<<< HEAD
+                    res.render("index");
+=======
+                } else {
+                    res.render("index", data[0].id);
+>>>>>>> 64e9ea7f31fc53ed40c4652d469725802a0852d1
+=======
                     res.render("home");
 
+>>>>>>> 3ffd36754db7f22e87cf3ac2edbb3a9f276bb4aa
                 }
             }
         )
