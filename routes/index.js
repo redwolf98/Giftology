@@ -28,7 +28,22 @@ module.exports = function (app) {
                     message: 'user registered sucessfully'
                 };
                 if (status) {
-                    res.redirect('/home');
+
+                    connection.query('SELECT * from user WHERE email = ? LIMIT 1', user.email, function(error,results,fields){
+                        if(error){
+                            message: "there is some error in aqcuiring userID"
+                        }else{
+                            req.mySession.user = {
+                                id: results[0].id,
+                                email: results[0].email,
+                                firstName: results[0].firstName,
+                                lastName: results[0].lastName
+                            };
+                            console.log(results);
+                            res.render('home');
+                        }
+                    });
+                  
                 } else {
                     res.render('signup', {
                         message: message
@@ -43,7 +58,7 @@ module.exports = function (app) {
         var password = req.body.password;
         let status = false;
         let message;
-        connection.query('SELECT * FROM user WHERE email = ?', [email], function (error, results, fields) {
+        connection.query('SELECT * FROM user WHERE email = ? LIMIT 1', [email], function (error, results, fields) {
             if (error) {
                 message = 'there is some error with query'
             } else {
@@ -58,6 +73,12 @@ module.exports = function (app) {
                 }
             }
             if (status) {
+                req.mySession.user = {
+                    id: results[0].id,
+                    firstName:  results[0].firstName,
+                    lastName:  results[0].lastName,
+                    email:  results[0].email
+                };
                 res.redirect("/home");
             } else {
                 res.render("login", {
@@ -75,11 +96,18 @@ module.exports = function (app) {
         res.render("aboutUs");
     });
 
-    app.get('/', function (req, res, next) {
 
-        res.render('login', {
-            message: ""
-        });
+
+
+    app.get('/', function (req, res, next) {
+        if(req.mySession.user){
+            res.redirect("home");
+        }else{
+            res.render('login', {
+                message: ""
+            });
+        }
+        
     });
     app.get('/signup', function (req, res) {
         res.render("signup", {

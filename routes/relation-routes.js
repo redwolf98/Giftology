@@ -2,13 +2,14 @@ var db = require("../models");
 
 module.exports = function(app){
 
-    app.get("/people", function(req,res){
+    app.get("/myPeople", function(req,res){
+        console.log("redirecting to people page");
         db.user.findAll({
             where: {
                 id: req.body.id
             }
         }).then(function(data){
-            res.send(data);
+            res.render("people",data);
         });
     });
 
