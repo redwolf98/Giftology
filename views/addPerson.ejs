@@ -6,7 +6,7 @@
             <div class="card text-center">
                 <div class="card-body">
                     <h3>Making a List</h3>
-                    <form class="form-horizontal" role="form" method="post" action="/people" onSubmit="return checkblank(this);">
+                    <form class="form-horizontal" role="form" method="post" action="/addPerson" onSubmit="return checkblank(this);">
                         <% if (message && message.length > 0) { %>
                             <div class="alert alert-danger col-sm-12">
                                 <%= message %>
@@ -32,21 +32,21 @@
                                 <div class="form-group">
                                     <label for="relationship" class="col-md-3 control-label"></label>
                                     <div class="col-md-9">
-                                        <input type="text" class="form-control" name="realtionship" placeholder="Relationship">
+                                        <input type="text" class="form-control" name="relationship" placeholder="Relationship">
                                     </div>
                                 </div>
 
                                 <div class="form-group">
                                     <label for="birthdate" class="col-md-3 control-label"></label>
                                     <div class="col-md-9">
-                                        <input type="text" class="form-control" name="birthdate" placeholder="Birthdate">
+                                        <input type="text" class="form-control" name="address" placeholder="Address">
                                     </div>
                                 </div>
 
                                 <div class="form-group">
                                     <!-- Button -->
                                     <div class="col-md-offset-3 col-md-9">
-                                        <button id="btn-add" type="submit" class="btn btn-info">
+                                        <button id="btn-addPerson" type="submit" class="btn btn-info">
                                             <i class="icon-hand-right"></i>Add Another Person</button>
                                         <button id="btn-view" type="submit" class="btn btn-info">
                                             <i class="icon-hand-right"></i>View List</button>
@@ -59,3 +59,5 @@
             </form>
         </div>
     </div>
+
+

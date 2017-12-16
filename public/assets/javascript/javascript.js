@@ -58,6 +58,8 @@ $(".walmart-btn").on("click", (res) => {
 
 });
 
+
+
 //Walmart: Used to make AJAX calls to the Walmart Search API. Parameters: correct queryURL and a product name
 function Walmart(queryURL, product) {
     //AJAX call
