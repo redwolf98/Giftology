@@ -86,6 +86,30 @@ cursor: pointer;
   width: 200px;
 }
 
+.header-btn {
+  background-color:#39BBA5 !important; 
+  border: 1px solid black !important;
+}
+
+.add-people {
+  margin: 30px;
+  height: 50px;
+  padding-left: 10px;
+  padding-right: 10px;
+  text-decoration: none;
+  text-align: center;
+  color: white;
+  background-color:#343A3F;
+  border: 1px solid black;
+}
+
+.fa {
+  padding-top: 10px;
+  -ms-transform: scale(2, 2); /* IE 9 */
+  -webkit-transform: scale(2, 2); /* Safari */
+  transform: scale(2, 2);
+}
+
 .list-group-item-action active {
   background-color: black;
 }
