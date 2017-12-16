@@ -79,8 +79,8 @@ function CreateCardsForProducts(products) {
     //Iterate through products array
     for (var i = 0; i < products.numItems; i++) {
         //Create a bootstrap card
-        var holder = $("<div class = 'col-lg-3 col-md-6 mb-4'></div>");
-        var card   = $("<div class = 'card'></div>");
+        var holder     = $("<div class = 'col-lg-3 col-md-6 mb-4'></div>");
+        var card       = $("<div class = 'card'></div>");
         var cardImage  = $("<img class = 'card-img-top'></img>").attr("src", products.items[i].mediumImage);
         var cardBody   = $("<div class = 'card-body'></div>");
         var cardHeader = $("<h5 class = 'card-title'></h5>").html(products.items[i].modelNumber);
