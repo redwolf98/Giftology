@@ -20,7 +20,7 @@ module.exports = function (app) {
     });
 
     app.get("/relation",function(req,res){
-        console.log("querying realtion table");
+        console.log("querying relation table");
 
         db.relation.findAll({
             where: {
@@ -72,7 +72,7 @@ module.exports = function (app) {
                 );
             });
 
-    app.put('/people', function (req, res) {
+    app.put('/myPeople', function (req, res) {
         db.user.update({
             firstName: req.body.firstName,
             lastName: req.body.lastName,
@@ -90,7 +90,7 @@ module.exports = function (app) {
         );
     });
 
-    app.delete('/people', function (req, res) {
+    app.delete('/myPeople', function (req, res) {
         db.user.destroy({
             where: {
                 id: req.body.id

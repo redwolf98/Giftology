@@ -4,8 +4,6 @@ var express = require('express');
 const db = require("../models");
 
 
-
-
 module.exports = function (app) {
     app.post('/signup', function (req, res) {
         var user = {
@@ -129,7 +127,7 @@ module.exports = function (app) {
         res.render('home', {});
     });
 
-    app.get("/people", function (req, res) {
+    app.get("/myPeople", function (req, res) {
         res.render('people', {
             message: ""
         });
@@ -143,7 +141,7 @@ module.exports = function (app) {
     });
 
 
-    app.post('/people', function (req, res) {
+    app.post('/myPeople', function (req, res) {
         console.log("posting person")
         var person = {
             "firstName": req.body.first_name,
