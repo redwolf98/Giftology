@@ -17,11 +17,13 @@ $.ajax({
     //Modal-body (/shopping)
     $(".people-list").empty();
 
-    var headerBtn = $("<button type='button' class='list-group-item list-group-item-action header-btn active' disabled>").html("Your People");
     //Iterate through the response array
     for(var a = 0; a < res.length; a++) {
         //Create a list item for each person in the database when response is received
-        var listItem = $("<li>");
+        var newRow   = $("<tr>");
+        var nameData = $("<td>");
+        var checkData= $("<td>");
+
         var personBadge = $("<span class = 'badge badge-success'>").html(res[a].firstName + " " + res[a].lastName);
         var checkBox = $("<input class = 'checkBox' type = 'checkBox' >");
 
@@ -32,11 +34,14 @@ $.ajax({
         checkBox.attr("relation-id", res[a].id);
 
         //Append elements
-        listItem.append(personBadge, checkBox);
+        nameData.append(personBadge);
+        checkData.append(checkBox);
+
+        newRow.append(nameData, checkData);
 
         //Append to DOM
-        $(".people-list").append(listItem);
-        $(".my-people").append(headerBtn, personBtn);
+        $(".people-list").append(newRow);
+        $(".my-people").append(personBtn);
     }
 });
 

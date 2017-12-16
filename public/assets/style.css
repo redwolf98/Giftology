@@ -45,7 +45,7 @@ cursor: pointer;
 }
 
 .badge {
-  width: 35%;
+  width: 60%;
   height: 20px;
   margin: 5px;
   background-color: #39BBA5;
@@ -94,8 +94,8 @@ cursor: pointer;
 .add-people {
   margin: 30px;
   height: 50px;
-  padding-left: 10px;
-  padding-right: 10px;
+  padding-left: 20px;
+  padding-right: 20px;
   text-decoration: none;
   text-align: center;
   color: white;
@@ -119,6 +119,10 @@ cursor: pointer;
     margin-left: auto;
     margin-right: auto;
  }
+
+.person-div {
+  display: inline;
+}
 
 /* /Shopping scrollbar style*/
 .style-3::-webkit-scrollbar-track
