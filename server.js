@@ -23,37 +23,6 @@ app.use(sessions({
   secure: false // if expiresIn < activeDuration, the session will be extended by activeDuration milliseconds 
 }));
 
-
-app.use(function(req,res,next){
-  if(req.mySession.user){
-    console.log(req.mySession.user);
-    next();
-  }else{
-    console.log("user:null");
-    next();
-  }
-});
- 
-app.use('/login', function(req, res,next) {   // Allows access to login page
-  if(!req.mySession.user){
-    console.log("in use login");
-    next();   // before access token check
-  }else{
-
-    res.redirect('home');
-  }
-  
-});
-
-app.use('/signup', function(req,res,next){
-  if(!req.mySession.user){
-    next();
-  }else{
-    res.redirect('home');
-  }
-  
-});
-
 // parse application/x-www-form-urlencoded
 app.use(bodyParser.urlencoded({
   extended: false
@@ -63,7 +32,22 @@ app.engine('ejs', engine);
 app.set('views', path.join(__dirname, 'views'));
 app.set('view engine', 'ejs');;
 
-
+app.use(function(req,res,next){
+  console.log("Attempting Page Change");
+  if(req.mySession.user){
+      console.log("  ALREADY IN");
+      next();
+  }else{
+     if(req.originalUrl == "/login" || req.originalUrl == "/signup" || req.originalUrl == "/aboutUs"){
+         next();
+     }else{
+         console.log("   REJECTED");
+         res.render("login",{
+             message: "Must Log In."
+         })
+     }
+  }
+});
 
 require("./routes/user-routes")(app);
 require("./routes/relation-routes")(app);
