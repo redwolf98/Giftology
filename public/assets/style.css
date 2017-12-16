@@ -103,6 +103,10 @@ cursor: pointer;
   border: 1px solid black;
 }
 
+.add-people:hover {
+  color: #39BBA5 !important;
+}
+
 .fa {
   padding-top: 10px;
   -ms-transform: scale(2, 2); /* IE 9 */
