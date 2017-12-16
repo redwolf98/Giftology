@@ -1,4 +1,6 @@
 var db = require("../models");
+var connection = require('../config/connection');
+
 
 module.exports = function (app) {
 
@@ -32,17 +34,18 @@ module.exports = function (app) {
     
 
     app.get("/addPerson",function(req,res){
-        res.render("addPerson", {message: ""});
+        res.render("addPerson",{message:""});
     });
 
 
     app.post("/addPerson", function (req, res) {
-        module.exports = function (app) {
-            app.post('/signup', function (req, res) {
+     
                 var person = {
+                    "userID": req.mySession.user.id,
                     "firstName": req.body.first_name,
                     "lastName": req.body.last_name,
-                    "relationship": req.body.relationship
+                    "relationship": req.body.relationship,
+                    "address": req.body.address
                 }
                 var message;
                 let status = false;
@@ -56,7 +59,9 @@ module.exports = function (app) {
                             message: 'person added sucessfully'
                         };
                         if (status) {
-                            res.redirect('/people-list');
+                            res.render('people', {
+                                message: message
+                            })
                         } else {
                             res.render('people', {
                                 message: message
@@ -66,8 +71,6 @@ module.exports = function (app) {
 
                 );
             });
-        }
-    });
 
     app.put('/people', function (req, res) {
         db.user.update({
