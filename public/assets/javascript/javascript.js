@@ -78,6 +78,7 @@ function Walmart(queryURL, product) {
     }).done( products => {
         
         //Creates a card for each product received from the Walmart API
+        //Creates .add-btn for the click event listener below
         CreateCardsForProducts(products);
 
         //Click event listener on .add-btn class (when the user adds a product)
