@@ -12,7 +12,12 @@ $.ajax({
     //Log the result
     console.log(res);
 
+    //Button list group (/people)
+    $(".my-people").empty();
+    //Modal-body (/shopping)
     $(".people-list").empty();
+
+    var headerBtn = $("<button type='button' class='list-group-item list-group-item-action header-btn active' disabled>").html("Your People");
     //Iterate through the response array
     for(var a = 0; a < res.length; a++) {
         //Create a list item for each person in the database when response is received
@@ -20,13 +25,18 @@ $.ajax({
         var personBadge = $("<span class = 'badge badge-success'>").html(res[a].firstName + " " + res[a].lastName);
         var checkBox = $("<input class = 'checkBox' type = 'checkBox' >");
 
+        var personBtn = $("<button type='button' class='list-group-item list-group-item-action'>").html(res[a].firstName + " " + res[a].lastName);
+
         //Update attributes (references position in array)
         checkBox.attr("person-number", a);
         checkBox.attr("relation-id", res[a].id);
 
         //Append elements
         listItem.append(personBadge, checkBox);
+
+        //Append to DOM
         $(".people-list").append(listItem);
+        $(".my-people").append(headerBtn, personBtn);
     }
 });
 
@@ -35,7 +45,7 @@ var walmartURL   = "http://api.walmartlabs.com/v1/search?apiKey=5tqpb7skr82fputf
 var gift;
 
 //Click event listener on .walmart-btn class
-$(".walmart-btn").on("click", () => {
+$(".walmart-btn").on("click", (res) => {
     
     //Reference #product-input
     var productInput = $("#product-input").val().trim().toLowerCase();
@@ -45,7 +55,7 @@ $(".walmart-btn").on("click", () => {
     
     //Invoke Walmart() with the following arguments
     Walmart(walmartURL, product);
-    
+
 });
 
 //Walmart: Used to make AJAX calls to the Walmart Search API. Parameters: correct queryURL and a product name
