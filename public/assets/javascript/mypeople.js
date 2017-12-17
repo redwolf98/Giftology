@@ -33,6 +33,7 @@ $.ajax({
         $(".card").show();
         //Reference the relation ID (for the gift request AJAX call)
         var relation = { id: $(this).attr("relation-id")}
+    
         //Populate the card with selected person's information
         $(".card-img-top").attr("src", $(this).attr("relation-url"));
         $(".card-name").html($(this).attr("relation-name"));
@@ -40,13 +41,7 @@ $.ajax({
         $(".card-rel").html($(this).attr("relation-rel").toUpperCase());
 
         //Retrieve gifts from database (AJAX GET method)
-        $.ajax({
-            url: "/gift",
-            method: "GET",
-            data: relation
-        })
-        .done(res => {
-            //Log the result
+        $.get("/gift", relation, function(res){
             console.log(res);
         });
     });

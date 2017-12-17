@@ -29,7 +29,6 @@ function Walmart(queryURL, product) {
         dataType: 'jsonp',
         crossDomain: true
     }).done( products => {
-        
         //Creates a card for each product received from the Walmart API
         //Creates .add-btn for the click event listener below
         CreateCardsForProducts(products);
@@ -83,7 +82,7 @@ function CreateCardsForProducts(products) {
         var card       = $("<div class = 'card'></div>");
         var cardImage  = $("<img class = 'card-img-top'></img>").attr("src", products.items[i].mediumImage);
         var cardBody   = $("<div class = 'card-body'></div>");
-        var cardHeader = $("<h5 class = 'card-title'></h5>").html(products.items[i].modelNumber);
+        var cardHeader = $("<h5 class = 'card-title'></h5>").html(products.items[i].name);
         var cardPrice  = $("<p class = 'card-price'></p>").html("$" + products.items[i].salePrice);
         var cardText   = $("<p class = 'card-text style-3'></p>").html(products.items[i].shortDescription);
         var cardFooter = $("<div class = 'card-footer'></div>");
@@ -96,7 +95,7 @@ function CreateCardsForProducts(products) {
         holder.append(card);
 
         //Add product properties as an attribute on the .add-btn (data is easily retrieved)
-        cardBtn.attr("product-name", products.items[i].modelNumber);
+        cardBtn.attr("product-name", products.items[i].name);
         cardBtn.attr("product-img", products.items[i].mediumImage);
         cardBtn.attr("product-price", products.items[i].salePrice);
         cardBtn.attr("product-url", products.items[i].productUrl);
