@@ -197,4 +197,62 @@ module.exports = function (app) {
         res.render('shopping', {});
     });
 
+
+
+    /**
+     * 
+     * BELOW ARE THE APP.USE QUERIES FOR REDIRECTING THE USER IF THEY ARE (AND ARE NOT) LOGGED IN
+     * 
+     */
+
+     app.use(function(req,res,next){
+         console.log("Attempting Page Change");
+         if(req.mySession.user){
+             console.log("  ALREADY IN");
+             next();
+         }else{
+            if(req.originalURL == "/login" || req.originalURL == "/signup"){
+                console.log("  LOGGIN IN");
+                next();
+            }else{
+                console.log("   REJECTED");
+                req.render("login",{
+                    message: "Must Log In."
+                })
+            }
+         }
+     });
+
+
+app.use(function(req,res,next){
+    if(req.mySession.user){
+      console.log(req.mySession.user);
+      next();
+    }else{
+      console.log("user:null");
+      next();
+    }
+  });
+   
+  app.use('/login', function(req, res,next) {   // Allows access to login page
+    if(!req.mySession.user){
+      console.log("in use login");
+      next();   // before access token check
+    }else{
+  
+      res.redirect('home');
+    }
+    
+  });
+  
+  app.use('/signup', function(req,res,next){
+    if(!req.mySession.user){
+      next();
+    }else{
+      res.redirect('home');
+    }
+    
+  });
+  
+
 }
