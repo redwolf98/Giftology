@@ -2,50 +2,41 @@ var db = require("../models");
 
 module.exports = function (app) {
 
-    app.get("/user", function (req, res) {
-        console.log(req);
-        db.user.findOne({
-            where: {
-                email: req.body.email,
-                password: req.body.password
-            }
-        }).then(
-            function (data) {
-                if (data.length == 0) {
-                    res.status(404).end();
-
-                }else{
-                    req.mySession.user = {
-                        id: data[0].id,
-                        firstName: data[0].firstName,
-                        lastName: data[0].lastName,
-                        email: data[0].email,
-                        photo_url: data[0].photo_url
-                    };
-
-                    res.render("home");
-                }
-            }
-        )
+    app.get("/myProfile", function (req, res) {
+        console.log();
+        console.log(req.headers.referer);
+        console.log();
+        console.log("url:'/myProfile', method:GET");
+        console.log("User.firstName = " + req.mySession.user.firstName);
+        console.log("User.lastName = " + req.mySession.user.lastName);
+        res.render("profile", {
+            message:"",
+            data: req.mySession.user});
+        
     });
 
-    app.post("/user", function (req, res) {
 
-        db.user.create({
+    app.put('/updateProfile', function (req, res) {
+        console.log();
+        console.log("url:'/updateProfile', method:PUT");
+        console.log("session.firstName = " + req.mySession.user.firstName);
+        // req.mySession.user.firstName = req.body.firstName;
+   
+        // req.mySession.user.lastName = req.body.lastName;
+
+        db.user.update({
             firstName: req.body.firstName,
-            lastName: req.body.lastName,
-            email: req.body.email,
-            password: req.body.password
+            lastName: req.body.lastName
+        },{where: {id: req.mySession.user.id}})
+        .then((result) =>{
+            console.log();
+            console.log("url:'/updateProfile', method:PUT, after execution");
+            console.log("result = " + result);
+            // if (err) throw err;
+            console.log("AFTER UPDATE session.firstName = " + req.mySession.user.firstName);
+           
+            res.send({message:"Successfully Updated"});
         });
-
-    });
-
-    app.put('/user', function (req, res) {
-
-    });
-
-    app.delete('/user', function (req, res) {
-
     });
 
 };
