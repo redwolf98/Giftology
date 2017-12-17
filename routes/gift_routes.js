@@ -9,7 +9,7 @@ module.exports = function (app) {
                 relationID: req.body.relationID
             }
         }).then(function (data) {
-            res.send(data);
+            res.status(200).json(data);
         });
     });
 

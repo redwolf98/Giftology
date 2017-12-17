@@ -17,7 +17,7 @@ h3 {
 
 }
 
-.jumbotron {
+.jumbotron, .background-gifts {
   /*background-image: url("../assets/images/jumbo-bg2.png");
   background-size: cover;
   background-color: transparent;*/
@@ -149,3 +149,20 @@ cursor: pointer;
 }
 
 .portrait-image{margin:0 auto;}
+a{
+  color:#ffffff;
+}
+a:hover{
+  text-decoration: none;
+  font-weight: bold;
+  color:white;
+}
+
+.signupLink{
+  color: blue;
+}
+.signupLink:hover{
+  color: blue;
+  text-decoration: none;
+  font-weight: bold;
+}
