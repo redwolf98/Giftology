@@ -9,6 +9,7 @@ module.exports = function (app) {
                 relationID: req.body.relationID
             }
         }).then(function (data) {
+            console.log("Method:GET URL:/gift RESPONSE=" + data);
             res.status(200).json(data);
         });
     });
@@ -58,6 +59,20 @@ module.exports = function (app) {
         }).then(function () {
             res.status(200).send("ok");
         });
+    });
+
+    app.get("/gifts/:relationID", function(req,res){
+
+        db.relation.findOne({where:{
+            id: req.params.relationID
+        }}).then(function(relationResult){
+            db.gift.findAll({where:{
+                relationID: req.params.relationID
+            }}).then(function(data){
+                res.render("giftList",data);
+            })
+        });
+
     });
 
 };
