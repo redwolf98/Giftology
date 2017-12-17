@@ -205,23 +205,7 @@ module.exports = function (app) {
      * 
      */
 
-     app.use(function(req,res,next){
-         console.log("Attempting Page Change");
-         if(req.mySession.user){
-             console.log("  ALREADY IN");
-             next();
-         }else{
-            if(req.originalURL == "/login" || req.originalURL == "/signup"){
-                console.log("  LOGGIN IN");
-                next();
-            }else{
-                console.log("   REJECTED");
-                req.render("login",{
-                    message: "Must Log In."
-                })
-            }
-         }
-     });
+    
 
 
 app.use(function(req,res,next){
