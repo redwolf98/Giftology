@@ -1,7 +1,7 @@
 {
   "name": "giftology",
   "version": "1.0.0",
-  "description": "Gorup Project #2",
+  "description": "Group Project #2",
   "main": "server.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
