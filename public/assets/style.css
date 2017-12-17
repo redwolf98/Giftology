@@ -6,6 +6,19 @@ h3 {
   color: #343A3F;
 }
 
+@media (min-width: 992px) {
+  .navbar-toggle {
+    visibility: hidden;
+  }
+}
+.navbar-toggle {
+  width: 30px;
+  height: 30px;
+  background-color: #39BBA5;
+  margin-left: 20px;
+  padding: 0;
+}
+
 .lead {
   color: white;
 
@@ -108,7 +121,7 @@ cursor: pointer;
   color: #39BBA5 !important;
 }
 
-.fa {
+.fa-plus-square {
   padding-top: 10px;
   -ms-transform: scale(2, 2); /* IE 9 */
   -webkit-transform: scale(2, 2); /* Safari */
