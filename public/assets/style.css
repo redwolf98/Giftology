@@ -12,10 +12,13 @@ h3 {
   }
 }
 .navbar-toggle {
-  width: 40px;
-  height: 40px;
+  width: 30px;
+  height: 30px;
   background-color: #39BBA5;
   padding: 0;
+}
+.navbar-toggle:hover {
+  cursor: pointer;
 }
 
 .lead {
@@ -34,7 +37,6 @@ h3 {
     -o-background-size: 100% 100%;
     background-size: 100% 100%;
 }
-
 
 .btn-info, .btn-primary {
 background-color: #343A3F;

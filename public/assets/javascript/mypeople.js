@@ -1,6 +1,7 @@
-//Retrieve people from database (AJAX GET method)
+//Hide the card on /myPeople page load
 $(".card").hide();
 
+//Retrieve people from database (AJAX GET method)
 $.ajax({
     url: "/relation",
     method: "GET"

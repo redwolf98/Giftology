@@ -1,9 +1,10 @@
-//Declare walmartURL
+//Declare walmartURL, initialize gift
 var walmartURL   = "http://api.walmartlabs.com/v1/search?apiKey=5tqpb7skr82fputft42hqt7e&query=";
 var gift;
 
 //Click event listener on .walmart-btn class
 $(".walmart-btn").on("click", (res) => {
+    event.preventDefault();
     
     //Reference #product-input
     var productInput = $("#product-input").val().trim().toLowerCase();
@@ -52,6 +53,7 @@ function Walmart(queryURL, product) {
 
          //When the user saves gifts to relation(s)
         $(".gift-save").on("click", function() {
+            
             //Reference all checkboxes
             var checkboxes = $(".checkBox");
             
