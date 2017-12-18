@@ -69,7 +69,8 @@ module.exports = function (app) {
             db.gift.findAll({where:{
                 relationID: req.params.relationID
             }}).then(function(data){
-                res.render("giftList",data);
+                
+                res.render("giftList",{pageName:"giftList","data":data});
             })
         });
 
