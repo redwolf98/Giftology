@@ -14,7 +14,8 @@ module.exports = function (app) {
 
         }).then(function(data){
             data.message = "";
-            res.render("people",data);
+            res.render("people",{pageName:"myPeople",
+                "data":data});
 
         });
     });
@@ -34,7 +35,8 @@ module.exports = function (app) {
     
 
     app.get("/addPerson",function(req,res){
-        res.render("addPerson",{message:""});
+        res.render("addPerson",{message:"",
+        pageName:"addPerson"});
     });
 
 
@@ -62,11 +64,13 @@ module.exports = function (app) {
                         };
                         if (status) {
                             res.render('people', {
-                                message: message
+                                message: message,
+                                pageName: "myPeople"
                             })
                         } else {
                             res.render('people', {
-                                message: message
+                                message: message,
+                                pageName:"myPeople"
                             })
                         }
                     }

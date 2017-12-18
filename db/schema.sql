@@ -48,12 +48,12 @@ DROP TABLE IF EXISTS relation;
 CREATE TABLE IF NOT EXISTS relation(
 	id INT auto_increment,
     userID INT NOT NULL,
-    firstName VARCHAR(50) NOT NULL,
-    lastName VARCHAR(50) NULL,
-    relationship VARCHAR(20) NULL,
+    firstName VARCHAR(500) NOT NULL,
+    lastName VARCHAR(500) NULL,
+    relationship VARCHAR(200) NULL,
     birthDate DATE NULL,
-    address VARCHAR(200) NULL,
-    photo_url varchar(200) NULL,
+    address VARCHAR(2000) NULL,
+    photo_url varchar(2000) NULL,
     primary key (id),
     CONSTRAINT `fk_relation_user` foreign key (userID)
 		REFERENCES user(id)
