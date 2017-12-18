@@ -171,3 +171,12 @@ a:hover{
   text-decoration: none;
   font-weight: bold;
 }
+
+.add-card {
+  background-color: #39BBA5;
+}
+.add-header {
+  background-color: #343A3F;
+  border-radius: 25px;
+  color: white;
+}
