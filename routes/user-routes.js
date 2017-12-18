@@ -11,7 +11,8 @@ module.exports = function (app) {
         console.log("User.lastName = " + req.mySession.user.lastName);
         res.render("profile", {
             message:"",
-            data: req.mySession.user});
+            data: req.mySession.user,
+            pageName:"myProfile"});
         
     });
 
