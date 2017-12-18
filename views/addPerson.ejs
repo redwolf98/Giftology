@@ -2,10 +2,10 @@
     
     <div class="row">
         <div class="col"></div>
-        <div class="col-sm-9 col-md-6 col-lg-4" style="margin:30px;">
-            <div class="card background-gifts" style="border:0; color: #ffffff;">
+        <div class="col-sm-6" style="margin-top: 30px;">
+            <div class="card text-center add-card">
                 <div class="card-body">
-                    <h3 style="color: #ffffff;">Making a List</h3>
+                    <h3 class="add-header">New Person</h3>
                     <form class="form-horizontal" role="form" method="post" action="/addPerson" onSubmit="return checkblank(this);">
                         <% if (message && message.length > 0) { %>
                             <div class="alert alert-danger col-sm-12">
@@ -18,41 +18,43 @@
                                 </div>
 
                                 <div class="form-group">
-                                    <label for="first_name" class="control-label">First Name</label>
-                                    <div class="col-md-9">
+                                    <label for="first_name" class="col-12 control-label"></label>
+                                    <div class="col-12">
                                         <input type="text" class="form-control" name="first_name" placeholder="First Name">
                                     </div>
                                 </div>
                                 <div class="form-group">
-                                    <label for="last_name" class="control-label">Last Name</label>
-                                    <div class="col-md-9">
+                                    <label for="last_name" class="col-12 control-label"></label>
+                                    <div class="col-12">
                                         <input type="text" class="form-control" name="last_name" placeholder="Last Name">
                                     </div>
                                 </div>
                                 <div class="form-group">
-                                    <label for="relationship" class="control-label">Relationship</label>
-                                    <div class="col-md-9">
+                                    <label for="relationship" class="col-12 control-label"></label>
+                                    <div class="col-12">
                                         <input type="text" class="form-control" name="relationship" placeholder="Relationship">
                                     </div>
                                 </div>
-
                                 <div class="form-group">
-                                    <label for="address" class="control-label">Address</label>
-                                    <div class="col-md-9">
+                                    <label for="birthdate" class="col-12 control-label"></label>
+                                    <div class="col-12">
                                         <input type="text" class="form-control" name="address" placeholder="Address">
+                                    </div>
+                                </div>
+                                <div class="form-group">
+                                    <label for="photo_url" class="col-12 control-label"></label>
+                                    <div class="col-12">
+                                        <input type="text" class="form-control" name="photo_url" placeholder="Photo URL (optional)">
                                     </div>
                                 </div>
 
                                 <div class="form-group">
                                     <!-- Button -->
-                                    <div class="col-md-offset-3 col-md-9">
-                                        <button id="btn-addPerson" type="submit" class="btn btn-info">
-                                            <i class="icon-hand-right"></i>Add Another Person</button>
-                                        
-                                            <a href="/people" >View List</a>
-                                        <!-- piece from original code???!-->
-                                        <!-- <div class="panel-title">Sign Up</div> -->
-                                    </div>
+                                    <button id="btn-addPerson" type="submit" class="btn btn-info">
+                                        <i class="icon-hand-right"></i>Add</button>
+                                    <!-- <a href="/people" >View List</a>-->
+                                    <!-- piece from original code???!-->
+                                    <!-- <div class="panel-title">Sign Up</div> -->
                                 </div>
                 </div>
             </div>

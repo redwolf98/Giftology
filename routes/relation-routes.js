@@ -47,8 +47,10 @@ module.exports = function (app) {
                     "firstName": req.body.first_name,
                     "lastName": req.body.last_name,
                     "relationship": req.body.relationship,
-                    "address": req.body.address
+                    "address": req.body.address,
+                    "photo_url": req.body.photo_url
                 }
+                console.log(req.body);
                 var message;
                 let status = false;
                 connection.query('INSERT INTO relation SET ?', person, function (error, results, fields) {
