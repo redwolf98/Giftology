@@ -1,57 +1,74 @@
 var connection = require('../config/connection');
 var express = require('express');
-
+var bcrypt = require('bcrypt')
 const db = require("../models");
 
 
 module.exports = function (app) {
     app.post('/signup', function (req, res) {
-        var user = {
-            "firstName": req.body.first_name,
-            "lastName": req.body.last_name,
-            "email": req.body.email,
-            "password": req.body.password,
 
-        }
-        var message;
-        let status = false;
-        connection.query('INSERT INTO user SET ?', user, function (error, results, fields) {
-                if (error) {
 
-                    message: 'there is some error with query'
-                }
-                else {
-                    status = true;
-                    message: 'user registered sucessfully'
-                };
-                if (status) {
-
-                    connection.query('SELECT * from user WHERE email = ? LIMIT 1', user.email, function(error,results,fields){
-                        if(error){
-                            message: "there is some error in aqcuiring userID"
-                        }else{
-                            req.mySession.user = {
-                                id: results[0].id,
-                                email: results[0].email,
-                                firstName: results[0].firstName,
-                                lastName: results[0].lastName
-                            };
-                            console.log(results);
-                            res.render('home');
-                        }
-                    });
-                  
-                } else {
-                    res.render('signup', {
-                        message: message
-                    })
-                }
+        bcrypt.hash(req.body.password, 10, function (err, hash) {
+            if (err) throw err;
+            var encryptedPassword = hash;
+            var user = {
+                "firstName": req.body.first_name,
+                "lastName": req.body.last_name,
+                "email": req.body.email,
+                "password": encryptedPassword,
             }
 
-        );
+            var message;
+            let status = false;
+            connection.query('INSERT INTO user SET ?', user, function (error, results, fields) {
+                    if (error) {
+
+                        message: 'there is some error with query'
+                    }
+                    else {
+                        status = true;
+                        console.log("success");
+                        message: 'user registered sucessfully'
+                    };
+                    if (status) {
+
+                        connection.query('SELECT * from user WHERE email = ? LIMIT 1', user.email, function (error, results, fields) {
+                            if (error) {
+                                message: "there is some error in aqcuiring userID"
+                            }
+                            else {
+                                req.mySession.user = {
+                                    id: results[0].id,
+                                    email: results[0].email,
+                                    firstName: results[0].firstName,
+                                    lastName: results[0].lastName
+                                };
+                                console.log(results);
+                                res.render('home');
+                            }
+                        });
+
+                    } else {
+                        res.render('signup', {
+                            message: message
+                        })
+                    }
+                }
+
+            );
+        })
+
     });
-    
+
     app.post('/login', function (req, res) {
+        function checkHash(password, hash) {
+            // Load hash from your password DB.
+            bcrypt.compare(password, hash, function (err, res) {
+                // res == true
+                console.log(hash + " is the hashed version of password: '" + password + "'? " + res);
+            });
+        }
+        // checkHash(req.body.password, //loaded pw from DB)
         console.log("Post login");
         var email = req.body.email;
         var password = req.body.password;
@@ -62,58 +79,68 @@ module.exports = function (app) {
                 message = 'there is some error with query'
             } else {
                 if (results.length > 0) {
-                    if (password == results[0].password) {
-                        status = true;
-                    } else {
-                        message = "Email and password do not match";
-                    }
+                    bcrypt.compare(password, results[0].password, function (err, match) {
+                        if (err) {
+                            console.log("error", err);
+                        } else {
+                            if (match) {
+                                req.mySession.user = {
+                                    id: results[0].id,
+                                    firstName: results[0].firstName,
+                                    lastName: results[0].lastName,
+                                    email: results[0].email
+                                };
+                                res.redirect("/home");
+                                // login was successful
+                            } else {
+                                res.render("login", {
+                                    message: message
+                                });
+                                // login failed
+                            }
+                            console.log("result", res);
+                        }
+                    })
+
                 } else {
                     message = "Email does not exist";
+                    res.render("login", {
+                        message: message
+                    });
                 }
             }
-            if (status) {
-                req.mySession.user = {
-                    id: results[0].id,
-                    firstName:  results[0].firstName,
-                    lastName:  results[0].lastName,
-                    email:  results[0].email
-                };
-                res.redirect("/home");
-            } else {
-                res.render("login", {
-                    message: message
-                });
-            }
+
+
 
         });
     });
 
-    app.get("/logout",function(req,res){
+    app.get("/logout", function (req, res) {
 
-            console.log("logging out");
-            req.mySession.reset();
-            res.render("login",{
-                message: "Successfully Logged Out"
-            });
+        console.log("logging out");
+        req.mySession.reset();
+        res.render("login", {
+            message: "Successfully Logged Out"
+        });
 
     });
 
 
-    app.get("/aboutUs", function(req,res){
+    app.get("/aboutUs", function (req, res) {
         console.log("redirecting to about us.");
         res.render("aboutUs");
     });
 
     app.get('/', function (req, res, next) {
-        if(req.mySession.user){
-            
+        if (req.mySession.user) {
+
             res.redirect("home");
-        }else{
+        } else {
             res.render('login', {
                 message: ""
             });
         }
-        
+
     });
 
     app.get('/signup', function (req, res) {
@@ -205,38 +232,38 @@ module.exports = function (app) {
      * 
      */
 
-    
 
 
-app.use(function(req,res,next){
-    if(req.mySession.user){
-      console.log(req.mySession.user);
-      next();
-    }else{
-      console.log("user:null");
-      next();
-    }
-  });
-   
-  app.use('/login', function(req, res,next) {   // Allows access to login page
-    if(!req.mySession.user){
-      console.log("in use login");
-      next();   // before access token check
-    }else{
-  
-      res.redirect('home');
-    }
-    
-  });
-  
-  app.use('/signup', function(req,res,next){
-    if(!req.mySession.user){
-      next();
-    }else{
-      res.redirect('home');
-    }
-    
-  });
-  
+
+    app.use(function (req, res, next) {
+        if (req.mySession.user) {
+            console.log(req.mySession.user);
+            next();
+        } else {
+            console.log("user:null");
+            next();
+        }
+    });
+
+    app.use('/login', function (req, res, next) { // Allows access to login page
+        if (!req.mySession.user) {
+            console.log("in use login");
+            next(); // before access token check
+        } else {
+
+            res.redirect('home');
+        }
+
+    });
+
+    app.use('/signup', function (req, res, next) {
+        if (!req.mySession.user) {
+            next();
+        } else {
+            res.redirect('home');
+        }
+
+    });
+
 
 }
