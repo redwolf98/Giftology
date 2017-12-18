@@ -15,6 +15,13 @@ h3 { color: #343A3F; }
   padding: 0;
 }
 
+.item-img { margin: 0 auto;}
+.carousel-control-prev, .carousel-control-next { background-color: #343A3F; }
+.relation-card {
+  
+  background-color: rgba(57, 187, 165, .4);
+}
+
 .lead { color: white; }
 
 .jumbotron, .background-gifts {
@@ -153,7 +160,6 @@ a{
 }
 a:hover{
   text-decoration: none;
-  font-weight: bold;
   color:white;
 }
 
