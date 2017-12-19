@@ -1,5 +1,5 @@
 //Hide the card on /myPeople page load
-$(".card").hide();
+$(".relation-card").hide();
 
 //Retrieve people from database (AJAX GET method)
 $.ajax({
@@ -7,9 +7,6 @@ $.ajax({
     method: "GET"
 })
 .done(res => {
-    //Log the result
-    console.log(res);
-    
     //Button list group (/people)
     $(".my-people").empty();
 
@@ -18,7 +15,8 @@ $.ajax({
         //Create a list item for each person in the database when response is received
         var personBtn = $("<button type='button' class='list-group-item list-group-item-action person-btn'>").html(res[a].firstName + " " + res[a].lastName);
         //Default photo URL
-        var personPhoto = (res[a].photo_url == null)? "https://spoilednyc.com/upload/undefined/people.png" : res[a].photo_url
+        var personPhoto = (res[a].photo_url == null || res[a].photo_url == "")? "https://spoilednyc.com/upload/undefined/people.png" : res[a].photo_url
+        console.log(personPhoto);
 
         //Add necessary attributes
         personBtn.attr("relation-id", res[a].id);
@@ -33,10 +31,13 @@ $.ajax({
 
     //Person btn click event
     $(".person-btn").on("click", function() {
-        //Show card on click (refresh will hide card)
-        $(".card").show();
         //Reference the relation ID (for the gift request AJAX call)
         var relation = { id: $(this).attr("relation-id")}
+
+        //Hide, then fade in the card on click (refresh will hide card)
+        $(".relation-card").hide();
+        $(".relation-card").css("visibility", "visible");
+        $(".relation-card").fadeIn("fast");
     
         //Populate the card with selected person's information
         $(".card-img-top").attr("src", $(this).attr("relation-url"));
@@ -44,35 +45,33 @@ $.ajax({
         $(".card-address").html("Address: " + $(this).attr("relation-address"));
         $(".card-rel").html($(this).attr("relation-rel").toUpperCase());
 
-        /*Retrieve gifts from database (AJAX GET method)
-        $.get("/gift/:" + relation.relationID, relation, function(res){
-            console.log(res);
-        });*/
+        //Get selected relation's gift info
+        $.get('/gift/:' + relation.id, function(data) {
+            //Empty div that holds selected persons gifts
+            $(".carousel-inner").empty();
+            
+            //Recreate first gift image
+            var initialContainer = $("<div class = 'carousel-item active'>");
+            var initialImg       = $("<img class = 'd-block item-img rounded' src='https://d30y9cdsu7xlg0.cloudfront.net/png/13360-200.png' width = '180' height = '180'>");
+            initialContainer.append(initialImg);
+            $(".carousel-inner").append(initialContainer);
 
-        /*
-        $.ajax({
-            url: "/gift/:" + relation.id,
-            method: "GET"
-        }).done(res => {
-            console.log(res);
-        });*/
+            //Create carousel elements for each gift
+            for(var i = 0; i < data.length; i++) {
+                var itemContainer = $("<div class = 'carousel-item'>");
+                var carouselLink  = $("<a target = '_blank'>");
+                var carouselImg   = $("<img class = 'd-block item-img rounded' width = '180' height = '180'>");
 
-        //.DONE(), create carousel elements for each gift (example is 4)
-        for(var i = 0; i < 4; i++) {
-            var itemContainer = $("<div class = 'carousel-item'>");
-            var carouselLink  = $("<a href = '#'>");
-            var carouselImg = $("<img class = 'd-block item-img rounded' width = '180' height = '180'>");
+                //Update necessary attributes
+                carouselLink.attr("href", data[i].web_url);
+                carouselImg.attr("src", data[i].image_url);
 
-            //Update necessary attributes
-                //a tag href links to product url
-                //img tag src to product img src
-            carouselImg.attr("src", "https://d30y9cdsu7xlg0.cloudfront.net/png/13360-200.png");
-
-            //Append necessary elements
-            carouselLink.append(carouselImg);
-            itemContainer.append(carouselLink);
-            $(".carousel-inner").append(itemContainer);
-        }
+                //Append necessary elements
+                carouselLink.append(carouselImg);
+                itemContainer.append(carouselLink);
+                $(".carousel-inner").append(itemContainer);  
+            }
+        });
     });
 });
 

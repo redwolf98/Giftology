@@ -3,10 +3,24 @@ body { padding-top: 60px; }
 h3 { color: #343A3F; }
 
 /* Walmart-btn overflow fix on small screens*/
-@media (max-width: 350px) { .wal-btn-div { padding: 0; margin: 0;} }
+@media (max-width: 350px) { 
+  .wal-btn-div { padding: 0; margin: 0;}
+  .ppl-footer {padding-right: 0; padding-left: 10px;}
+}
 
-/* Navbar CSS (@media: hide toggle btn on large screens)*/
-@media (min-width: 992px) { .navbar-toggle { visibility: hidden; } }
+ /*Large screen media query*/
+@media (min-width: 992px) { 
+  .navbar-toggle { visibility: hidden; }
+  .product-card:hover {
+    -moz-transform: scale(1.05);
+    -webkit-transform: scale(1.05);
+    -o-transform: scale(1.05);
+    -ms-transform: scale(1.05);
+    transform: scale(1.05);
+  }
+}
+
+/* Navbar CSS*/
 .navbar-toggle:hover { cursor: pointer; }
 .navbar-toggle {
   width: 30px;
@@ -15,11 +29,10 @@ h3 { color: #343A3F; }
   padding: 0;
 }
 
-
 .item-img { margin: 0 auto;}
 .carousel-control-prev, .carousel-control-next { background-color: #343A3F; }
 .relation-card {
-  
+  visibility: hidden;
   background-color: rgba(57, 187, 165, .4);
 }
 
@@ -51,6 +64,15 @@ h3 { color: #343A3F; }
   border-radius: 25px;
   padding: 20px 10px 20px 10px;
   margin: 20px 0 0 10px;
+}
+
+.product-header { background-color: white !important;}
+.product-card {
+  background-color: rgb(215, 240, 245);
+  -webkit-transition: 0.3s ease-in-out;
+  -moz-transition: 0.3s ease-in-out;
+  -o-transition: 0.3s ease-in-out;
+  transition: 0.3s ease-in-out;
 }
 
 .add-btn {
@@ -143,6 +165,7 @@ h3 { color: #343A3F; }
 .person-div {
   display: inline;
 }
+.person-btn:hover { cursor: pointer; }
 
 /* /Shopping scrollbar style*/
 .style-3::-webkit-scrollbar-track
@@ -181,3 +204,13 @@ a:hover{
   border-radius: 25px;
   color: white;
 }
+
+#loading-img {
+  visibility: hidden;
+  -webkit-animation:spin 2s linear infinite;
+  -moz-animation:spin 2s linear infinite;
+  animation:spin 2s linear infinite;
+}
+@-moz-keyframes spin { 100% { -moz-transform: rotate(360deg); } }
+@-webkit-keyframes spin { 100% { -webkit-transform: rotate(360deg); } }
+@keyframes spin { 100% { -webkit-transform: rotate(360deg); transform:rotate(360deg); } }
