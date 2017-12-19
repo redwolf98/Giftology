@@ -44,13 +44,16 @@ module.exports = function (app) {
                                     lastName: results[0].lastName
                                 };
                                 console.log(results);
-                                res.render('home');
+                                res.render('home',{
+                                    pageName: "home"
+                                });
                             }
                         });
 
                     } else {
                         res.render('signup', {
-                            message: message
+                            message: message,
+                            pageName: "home"
                         })
                     }
                 }
@@ -94,7 +97,8 @@ module.exports = function (app) {
                                 // login was successful
                             } else {
                                 res.render("login", {
-                                    message: message
+                                    message: message,
+                                    pageName: ""
                                 });
                                 // login failed
                             }
@@ -105,7 +109,8 @@ module.exports = function (app) {
                 } else {
                     message = "Email does not exist";
                     res.render("login", {
-                        message: message
+                        message: message,
+                        pageName: ""
                     });
                 }
             }
