@@ -8,8 +8,19 @@ h3 { color: #343A3F; }
   .ppl-footer {padding-right: 0; padding-left: 10px;}
 }
 
-/* Navbar CSS (@media: hide toggle btn on large screens)*/
-@media (min-width: 992px) { .navbar-toggle { visibility: hidden; } }
+ /*Large screen media query*/
+@media (min-width: 992px) { 
+  .navbar-toggle { visibility: hidden; }
+  .product-card:hover {
+    -moz-transform: scale(1.05);
+    -webkit-transform: scale(1.05);
+    -o-transform: scale(1.05);
+    -ms-transform: scale(1.05);
+    transform: scale(1.05);
+  }
+}
+
+/* Navbar CSS*/
 .navbar-toggle:hover { cursor: pointer; }
 .navbar-toggle {
   width: 30px;
@@ -53,6 +64,15 @@ h3 { color: #343A3F; }
   border-radius: 25px;
   padding: 20px 10px 20px 10px;
   margin: 20px 0 0 10px;
+}
+
+.product-header { background-color: white !important;}
+.product-card {
+  background-color: rgb(215, 240, 245);
+  -webkit-transition: 0.3s ease-in-out;
+  -moz-transition: 0.3s ease-in-out;
+  -o-transition: 0.3s ease-in-out;
+  transition: 0.3s ease-in-out;
 }
 
 .add-btn {
