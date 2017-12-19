@@ -1,7 +1,7 @@
 $("#loading-img").hide();
 
 //Declare walmartURL, initialize gift
-var walmartURL   = "http://api.walmartlabs.com/v1/search?apiKey=5tqpb7skr82fputft42hqt7e&query=";
+var walmartURL   = "https://api.walmartlabs.com/v1/search?apiKey=5tqpb7skr82fputft42hqt7e&query=";
 var gift;
 
 //Click event listener on .walmart-btn class
