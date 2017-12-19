@@ -4,9 +4,6 @@ $.ajax({
     method: "GET"
 })
 .done(res => {
-    //Log the result
-    console.log(res);
-
     //Modal-body (/shopping)
     $(".people-list").empty();
 

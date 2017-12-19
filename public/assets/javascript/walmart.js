@@ -1,16 +1,22 @@
+$("#loading-img").hide();
+
 //Declare walmartURL, initialize gift
 var walmartURL   = "http://api.walmartlabs.com/v1/search?apiKey=5tqpb7skr82fputft42hqt7e&query=";
 var gift;
 
 //Click event listener on .walmart-btn class
 $(".walmart-btn").on("click", (res) => {
-    event.preventDefault();
+    res.preventDefault();
     
     //Reference #product-input
     var productInput = $("#product-input").val().trim().toLowerCase();
 
     //Assign default value to if productInput is empty
     var product = (productInput !== "")? productInput : "iphone";
+
+    //Show loading animation
+    $("#loading-img").fadeIn("fast");
+    $("#loading-img").css("visibility", "visible");
     
     //Invoke Walmart() with the following arguments
     Walmart(walmartURL, product);
@@ -30,6 +36,10 @@ function Walmart(queryURL, product) {
         dataType: 'jsonp',
         crossDomain: true
     }).done( products => {
+        //Hide loading animation
+        $("#loading-img").hide();
+        $("#loading-img").css("visibility", "hidden");
+
         //Creates a card for each product received from the Walmart API
         //Creates .add-btn for the click event listener below
         CreateCardsForProducts(products);
@@ -81,19 +91,21 @@ function CreateCardsForProducts(products) {
     for (var i = 0; i < products.numItems; i++) {
         //Create a bootstrap card
         var holder     = $("<div class = 'col-lg-3 col-md-6 mb-4'></div>");
-        var card       = $("<div class = 'card'></div>");
-        var cardImage  = $("<img class = 'card-img-top'></img>").attr("src", products.items[i].mediumImage);
+        var card       = $("<div class = 'card product-card'></div>");
+        var cardHeader = $("<div class = 'card-header product-header'></div>");
+        var cardImage  = $("<img class = 'card-img-top rounded'></img>").attr("src", products.items[i].mediumImage);
         var cardBody   = $("<div class = 'card-body'></div>");
-        var cardHeader = $("<h5 class = 'card-title'></h5>").html(products.items[i].name);
+        var cardTitle = $("<h5 class = 'card-title'></h5>").html(products.items[i].name);
         var cardPrice  = $("<p class = 'card-price'></p>").html("$" + products.items[i].salePrice);
         var cardText   = $("<p class = 'card-text style-3'></p>").html(products.items[i].shortDescription);
         var cardFooter = $("<div class = 'card-footer'></div>");
         var cardBtn    = $("<button class = 'btn btn-primary add-btn' data-toggle='modal' data-target='#myModal'></button>").html("Add to List");
 
         //Append correct elements
-        cardBody.append(cardHeader, cardPrice, cardText);
+        cardBody.append(cardTitle, cardPrice, cardText);
+        cardHeader.append(cardImage);
         cardFooter.append(cardBtn);
-        card.append(cardImage, cardBody, cardFooter);
+        card.append(cardHeader, cardBody, cardFooter);
         holder.append(card);
 
         //Add product properties as an attribute on the .add-btn (data is easily retrieved)
