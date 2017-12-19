@@ -14,7 +14,8 @@ module.exports = function (app) {
 
         }).then(function(data){
             data.message = "";
-            res.render("people",data);
+            res.render("people",{pageName:"myPeople",
+                "data":data});
 
         });
     });
@@ -34,7 +35,8 @@ module.exports = function (app) {
     
 
     app.get("/addPerson",function(req,res){
-        res.render("addPerson",{message:""});
+        res.render("addPerson",{message:"",
+        pageName:"addPerson"});
     });
 
 
@@ -45,8 +47,10 @@ module.exports = function (app) {
                     "firstName": req.body.first_name,
                     "lastName": req.body.last_name,
                     "relationship": req.body.relationship,
-                    "address": req.body.address
+                    "address": req.body.address,
+                    "photo_url": req.body.photo_url
                 }
+                console.log(req.body);
                 var message;
                 let status = false;
                 connection.query('INSERT INTO relation SET ?', person, function (error, results, fields) {
@@ -60,11 +64,13 @@ module.exports = function (app) {
                         };
                         if (status) {
                             res.render('people', {
-                                message: message
+                                message: message,
+                                pageName: "myPeople"
                             })
                         } else {
                             res.render('people', {
-                                message: message
+                                message: message,
+                                pageName:"myPeople"
                             })
                         }
                     }

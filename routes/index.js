@@ -88,6 +88,7 @@ module.exports = function (app) {
                                     id: results[0].id,
                                     firstName: results[0].firstName,
                                     lastName: results[0].lastName,
+                                    photoURL: results[0].photo_url,
                                     email: results[0].email
                                 };
                                 res.redirect("/home");
@@ -105,12 +106,26 @@ module.exports = function (app) {
                 } else {
                     message = "Email does not exist";
                     res.render("login", {
-                        message: message
+                        message: message,
+                        pageName: "login"
                     });
                 }
             }
-
-
+            // if (status) {
+            //     req.mySession.user = {
+            //         id: results[0].id,
+            //         firstName: results[0].firstName,
+            //         lastName: results[0].lastName,
+            //         photoURL: results[0].photo_url,
+            //         email: results[0].email
+            //     };
+            //     res.redirect("/home");
+            // } else {
+            //     res.render("login", {
+            //         message: message,
+            //         pageName: "login"
+            //     });
+            // }
 
         });
     });
@@ -120,7 +135,8 @@ module.exports = function (app) {
         console.log("logging out");
         req.mySession.reset();
         res.render("login", {
-            message: "Successfully Logged Out"
+            message: "Successfully Logged Out",
+            pageName: "login"
         });
 
     });
@@ -128,7 +144,9 @@ module.exports = function (app) {
 
     app.get("/aboutUs", function (req, res) {
         console.log("redirecting to about us.");
-        res.render("aboutUs");
+        res.render("aboutUs", {
+            pageName: "aboutUs"
+        });
     });
 
     app.get('/', function (req, res, next) {
@@ -137,7 +155,8 @@ module.exports = function (app) {
             res.redirect("home");
         } else {
             res.render('login', {
-                message: ""
+                message: "",
+                pageName: "login"
             });
         }
 
@@ -145,18 +164,22 @@ module.exports = function (app) {
 
     app.get('/signup', function (req, res) {
         res.render("signup", {
-            message: ""
+            message: "",
+            pageName: "signup"
         });
     });
 
     app.get('/home', function (req, res, next) {
         console.log("rendering home");
-        res.render('home', {});
+        res.render('home', {
+            pageName: "home"
+        });
     });
 
     app.get("/myPeople", function (req, res) {
         res.render('people', {
-            message: ""
+            message: "",
+            pageName: "myPeople"
         });
         // db.user.findAll({
         //     where: {
@@ -192,7 +215,8 @@ module.exports = function (app) {
                     res.redirect('/people-list');
                 } else {
                     res.render('people', {
-                        message: message
+                        message: message,
+                        pageName: "myPeople"
                     })
                 }
             }
@@ -221,7 +245,9 @@ module.exports = function (app) {
 
     app.get('/shopping', function (req, res, next) {
         console.log("rendering shopping");
-        res.render('shopping', {});
+        res.render('shopping', {
+            pageName: "shopping"
+        });
     });
 
 

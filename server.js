@@ -43,6 +43,7 @@ app.use(function(req,res,next){
      }else{
          console.log("   REJECTED");
          res.render("login",{
+             pageName:"login",
              message: "Must Log In."
          })
      }
