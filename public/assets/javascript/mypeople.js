@@ -7,9 +7,6 @@ $.ajax({
     method: "GET"
 })
 .done(res => {
-    //Log the result
-    console.log(res);
-    
     //Button list group (/people)
     $(".my-people").empty();
 
@@ -33,6 +30,9 @@ $.ajax({
 
     //Person btn click event
     $(".person-btn").on("click", function() {
+        //Reference the relation ID (for the gift request AJAX call)
+        var relation = { id: $(this).attr("relation-id")}
+
         //Hide, then fade in the card on click (refresh will hide card)
         $(".relation-card").hide();
         $(".relation-card").css("visibility", "visible");
@@ -44,43 +44,33 @@ $.ajax({
         $(".card-address").html("Address: " + $(this).attr("relation-address"));
         $(".card-rel").html($(this).attr("relation-rel").toUpperCase());
 
-        /*Retrieve gifts from database (AJAX GET method)
-        $.get("/gift/:" + relation.relationID, relation, function(res){
-            console.log(res);
-        });*/
-        /*
-        $.ajax({
-            url: "/gift/:" + relation.id,
-            method: "GET",
-            data: parseInt(relation.id)
-        }).done(res => {
-            console.log(res);
-            console.log(relation.id);
-        });*/
+        //Get selected relation's gift info
+        $.get('/gift/:' + relation.id, function(data) {
+            //Empty div that holds selected persons gifts
+            $(".carousel-inner").empty();
+            
+            //Recreate first gift image
+            var initialContainer = $("<div class = 'carousel-item active'>");
+            var initialImg       = $("<img class = 'd-block item-img rounded' src='https://d30y9cdsu7xlg0.cloudfront.net/png/13360-200.png' width = '180' height = '180'>");
+            initialContainer.append(initialImg);
+            $(".carousel-inner").append(initialContainer);
 
-        /*Reference the relation ID (for the gift request AJAX call)
-        var relation = { id: $(this).attr("relation-id")}
+            //Create carousel elements for each gift
+            for(var i = 0; i < data.length; i++) {
+                var itemContainer = $("<div class = 'carousel-item'>");
+                var carouselLink  = $("<a target = '_blank'>");
+                var carouselImg   = $("<img class = 'd-block item-img rounded' width = '180' height = '180'>");
 
-        $.get('/gift/:', { id: relation.id }, function(data) {
-            console.log(data);
-        });*/
+                //Update necessary attributes
+                carouselLink.attr("href", data[i].web_url);
+                carouselImg.attr("src", data[i].image_url);
 
-        //.DONE(), create carousel elements for each gift (example is 4)
-        for(var i = 0; i < 4; i++) {
-            var itemContainer = $("<div class = 'carousel-item'>");
-            var carouselLink  = $("<a href = '#'>");
-            var carouselImg = $("<img class = 'd-block item-img rounded' width = '180' height = '180'>");
-
-            //Update necessary attributes
-                //a tag href links to product url
-                //img tag src to product img src
-            carouselImg.attr("src", "https://d30y9cdsu7xlg0.cloudfront.net/png/13360-200.png");
-
-            //Append necessary elements
-            carouselLink.append(carouselImg);
-            itemContainer.append(carouselLink);
-            $(".carousel-inner").append(itemContainer);
-        }
+                //Append necessary elements
+                carouselLink.append(carouselImg);
+                itemContainer.append(carouselLink);
+                $(".carousel-inner").append(itemContainer);
+            }
+        });
     });
 });
 

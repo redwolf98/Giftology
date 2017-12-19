@@ -2,10 +2,13 @@ var db = require("../models");
 
 module.exports = function (app) {
 
-    app.get("/gift/:id", function (req, res) {
+    app.get("/gift/:relationID", function (req, res) {
+        var id = req.params.relationID.split(':');
+        console.log("Sent ID:" + req.params.relationID);
+        console.log("Real ID:" + id[1]);
         db.gift.findAll({
             where: {
-                relationID: req.params.id
+                relationID: parseInt(id[1])
             }
         }).then(function (data) {
             console.log("Method:GET URL:/gift RESPONSE=" + data);
