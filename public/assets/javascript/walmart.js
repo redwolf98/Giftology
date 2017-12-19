@@ -6,7 +6,7 @@ var gift;
 
 //Click event listener on .walmart-btn class
 $(".walmart-btn").on("click", (res) => {
-    event.preventDefault();
+    res.preventDefault();
     
     //Reference #product-input
     var productInput = $("#product-input").val().trim().toLowerCase();

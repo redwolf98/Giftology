@@ -15,7 +15,8 @@ $.ajax({
         //Create a list item for each person in the database when response is received
         var personBtn = $("<button type='button' class='list-group-item list-group-item-action person-btn'>").html(res[a].firstName + " " + res[a].lastName);
         //Default photo URL
-        var personPhoto = (res[a].photo_url == null)? "https://spoilednyc.com/upload/undefined/people.png" : res[a].photo_url
+        var personPhoto = (res[a].photo_url == null || res[a].photo_url == "")? "https://spoilednyc.com/upload/undefined/people.png" : res[a].photo_url
+        console.log(personPhoto);
 
         //Add necessary attributes
         personBtn.attr("relation-id", res[a].id);
@@ -68,7 +69,7 @@ $.ajax({
                 //Append necessary elements
                 carouselLink.append(carouselImg);
                 itemContainer.append(carouselLink);
-                $(".carousel-inner").append(itemContainer);
+                $(".carousel-inner").append(itemContainer);  
             }
         });
     });
