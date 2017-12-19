@@ -21,4 +21,3 @@ SELECT user.id,
        FROM user INNER JOIN relation ON user.id = relation.userID
        WHERE user.firstName = "Tony"
        AND relation.firstName = "Mike";
-
