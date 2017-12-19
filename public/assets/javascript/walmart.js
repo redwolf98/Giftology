@@ -1,3 +1,5 @@
+$("#loading-img").hide();
+
 //Declare walmartURL, initialize gift
 var walmartURL   = "http://api.walmartlabs.com/v1/search?apiKey=5tqpb7skr82fputft42hqt7e&query=";
 var gift;
@@ -11,6 +13,10 @@ $(".walmart-btn").on("click", (res) => {
 
     //Assign default value to if productInput is empty
     var product = (productInput !== "")? productInput : "iphone";
+
+    //Show loading animation
+    $("#loading-img").fadeIn("fast");
+    $("#loading-img").css("visibility", "visible");
     
     //Invoke Walmart() with the following arguments
     Walmart(walmartURL, product);
@@ -30,6 +36,10 @@ function Walmart(queryURL, product) {
         dataType: 'jsonp',
         crossDomain: true
     }).done( products => {
+        //Hide loading animation
+        $("#loading-img").hide();
+        $("#loading-img").css("visibility", "hidden");
+
         //Creates a card for each product received from the Walmart API
         //Creates .add-btn for the click event listener below
         CreateCardsForProducts(products);

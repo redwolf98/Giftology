@@ -18,11 +18,10 @@ h3 { color: #343A3F; }
   padding: 0;
 }
 
-
 .item-img { margin: 0 auto;}
 .carousel-control-prev, .carousel-control-next { background-color: #343A3F; }
 .relation-card {
-  
+  visibility: hidden;
   background-color: rgba(57, 187, 165, .4);
 }
 
@@ -185,3 +184,13 @@ a:hover{
   border-radius: 25px;
   color: white;
 }
+
+#loading-img {
+  visibility: hidden;
+  -webkit-animation:spin 2s linear infinite;
+  -moz-animation:spin 2s linear infinite;
+  animation:spin 2s linear infinite;
+}
+@-moz-keyframes spin { 100% { -moz-transform: rotate(360deg); } }
+@-webkit-keyframes spin { 100% { -webkit-transform: rotate(360deg); } }
+@keyframes spin { 100% { -webkit-transform: rotate(360deg); transform:rotate(360deg); } }

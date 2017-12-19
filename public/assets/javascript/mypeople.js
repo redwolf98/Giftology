@@ -1,5 +1,5 @@
 //Hide the card on /myPeople page load
-$(".card").hide();
+$(".relation-card").hide();
 
 //Retrieve people from database (AJAX GET method)
 $.ajax({
@@ -33,8 +33,10 @@ $.ajax({
 
     //Person btn click event
     $(".person-btn").on("click", function() {
-        //Show card on click (refresh will hide card)
-        $(".card").show();
+        //Hide, then fade in the card on click (refresh will hide card)
+        $(".relation-card").hide();
+        $(".relation-card").css("visibility", "visible");
+        $(".relation-card").fadeIn("fast");
     
         //Populate the card with selected person's information
         $(".card-img-top").attr("src", $(this).attr("relation-url"));
