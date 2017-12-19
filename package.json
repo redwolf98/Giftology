@@ -18,7 +18,6 @@
   },
   "homepage": "https://github.com/redwolf98/Giftology#readme",
   "dependencies": {
-    "bcrypt": "^1.0.3",
     "body-parser": "^1.18.2",
     "client-sessions": "^0.8.0",
     "ejs": "^2.5.7",
