@@ -3,7 +3,6 @@ var db = require("../models");
 module.exports = function (app) {
 
     app.get("/gift/:id", function (req, res) {
-        //res.render('gifts');
         db.gift.findAll({
             where: {
                 relationID: req.params.id

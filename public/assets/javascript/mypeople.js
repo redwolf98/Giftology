@@ -35,8 +35,6 @@ $.ajax({
     $(".person-btn").on("click", function() {
         //Show card on click (refresh will hide card)
         $(".card").show();
-        //Reference the relation ID (for the gift request AJAX call)
-        var relation = { id: $(this).attr("relation-id")}
     
         //Populate the card with selected person's information
         $(".card-img-top").attr("src", $(this).attr("relation-url"));
@@ -48,13 +46,21 @@ $.ajax({
         $.get("/gift/:" + relation.relationID, relation, function(res){
             console.log(res);
         });*/
-
         /*
         $.ajax({
             url: "/gift/:" + relation.id,
-            method: "GET"
+            method: "GET",
+            data: parseInt(relation.id)
         }).done(res => {
             console.log(res);
+            console.log(relation.id);
+        });*/
+
+        /*Reference the relation ID (for the gift request AJAX call)
+        var relation = { id: $(this).attr("relation-id")}
+
+        $.get('/gift/:', { id: relation.id }, function(data) {
+            console.log(data);
         });*/
 
         //.DONE(), create carousel elements for each gift (example is 4)

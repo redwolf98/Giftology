@@ -3,7 +3,10 @@ body { padding-top: 60px; }
 h3 { color: #343A3F; }
 
 /* Walmart-btn overflow fix on small screens*/
-@media (max-width: 350px) { .wal-btn-div { padding: 0; margin: 0;} }
+@media (max-width: 350px) { 
+  .wal-btn-div { padding: 0; margin: 0;}
+  .ppl-footer {padding-right: 0; padding-left: 10px;}
+}
 
 /* Navbar CSS (@media: hide toggle btn on large screens)*/
 @media (min-width: 992px) { .navbar-toggle { visibility: hidden; } }
@@ -143,6 +146,7 @@ h3 { color: #343A3F; }
 .person-div {
   display: inline;
 }
+.person-btn:hover { cursor: pointer; }
 
 /* /Shopping scrollbar style*/
 .style-3::-webkit-scrollbar-track
