@@ -2,8 +2,7 @@
 $.ajax({
     url: "/relation",
     method: "GET"
-})
-.done(res => {
+}).done(function(res) {
     //Modal-body (/shopping)
     $(".people-list").empty();
 

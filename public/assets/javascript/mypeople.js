@@ -6,7 +6,7 @@ $.ajax({
     url: "/relation",
     method: "GET"
 })
-.done(res => {
+.done(function(res) {
     //Button list group (/people)
     $(".my-people").empty();
 

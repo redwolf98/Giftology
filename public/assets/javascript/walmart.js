@@ -5,7 +5,7 @@ var walmartURL   = "https://api.walmartlabs.com/v1/search?apiKey=5tqpb7skr82fput
 var gift;
 
 //Click event listener on .walmart-btn class
-$(".walmart-btn").on("click", (res) => {
+$(".walmart-btn").on("click", function(res) {
     res.preventDefault();
     
     //Reference #product-input
@@ -35,7 +35,7 @@ function Walmart(queryURL, product) {
         method: 'GET',
         dataType: 'jsonp',
         crossDomain: true
-    }).done( products => {
+    }).done( function(products) {
         //Hide loading animation
         $("#loading-img").hide();
         $("#loading-img").css("visibility", "hidden");
