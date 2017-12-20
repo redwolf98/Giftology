@@ -6,7 +6,7 @@ $.ajax({
     url: "/relation",
     method: "GET"
 })
-.done(function(res) {
+.done( function(res) {
     //Button list group (/people)
     $(".my-people").empty();
 
@@ -16,7 +16,6 @@ $.ajax({
         var personBtn = $("<button type='button' class='list-group-item list-group-item-action person-btn'>").html(res[a].firstName + " " + res[a].lastName);
         //Default photo URL
         var personPhoto = (res[a].photo_url == null || res[a].photo_url == "")? "https://spoilednyc.com/upload/undefined/people.png" : res[a].photo_url
-        console.log(personPhoto);
 
         //Add necessary attributes
         personBtn.attr("relation-id", res[a].id);

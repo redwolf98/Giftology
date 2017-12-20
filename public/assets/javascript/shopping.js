@@ -2,8 +2,8 @@
 $.ajax({
     url: "/relation",
     method: "GET"
-}).done(function(res) {
-    //Modal-body (/shopping)
+}).done( function(res) {
+    //Empty the modal-body (appears when adding a product to list)
     $(".people-list").empty();
 
     //Iterate through the response array
@@ -13,6 +13,7 @@ $.ajax({
         var nameData = $("<td>");
         var checkData= $("<td>");
 
+        //Create the following html elements (person-badge and checkbox)
         var personBadge = $("<span class = 'badge badge-success'>").html(res[a].firstName + " " + res[a].lastName);
         var checkBox = $("<input class = 'checkBox' type = 'checkBox' >");
 

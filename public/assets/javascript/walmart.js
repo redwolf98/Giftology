@@ -1,3 +1,4 @@
+//Hide loading image on page load (invisible in CSS, but this stops rotation calculation)
 $("#loading-img").hide();
 
 //Declare walmartURL, initialize gift
