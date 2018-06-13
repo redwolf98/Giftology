@@ -1,0 +1,52 @@
+<% layout('layout') -%>
+<div class="container">
+    <div class="row">
+        <div class="col-xs-12 col-md-1 col-lg-1 col-xs-push-1">
+            <a type="button" class="add-people" href="/addPerson"><i class="fa fa-plus-square" aria-hidden="true"></i></a>
+        </div>
+        <div class="col-sm-12 col-md-4 col-lg-5">
+            <div class="list-group" style="margin: 30px 0 0 0px; width: 100%;">
+                <button type='button' class='list-group-item list-group-item-action header-btn active' disabled>Your People</button>
+                <div class="my-people">
+                    <!-- People append here -->
+                </div>
+            </div>
+        </div>
+        <!-- Selected person's info displayed in card-->
+        <div class="col-lg-5 col-md-6 col-xs-12" style="margin: 30px 0 0 0px;">
+                <div class="card relation-card">
+                    <img class="card-img-top rounded" src="http://placehold.it/500x325" alt="" style="margin-top: 10px;">
+                    <div class="card-body">
+                        <h5 class="card-name"></h5>
+                        <p class="card-address"></p>
+                        <h6 class="card-rel"></h6>
+                        <!-- Carousel: display's selected person's gifts -->
+                        <div id="giftCarousel" class="carousel slide" data-ride="carousel">
+                            <div class="carousel-inner">
+                              <div class="carousel-item active">
+                                <img class="d-block item-img rounded" src="https://d30y9cdsu7xlg0.cloudfront.net/png/13360-200.png" width="180" height="180">
+                              </div>
+                                <!-- Append selected person's gifts here -->
+
+                            </div>
+                            <a class="carousel-control-prev" href="#giftCarousel" role="button" data-slide="prev">
+                              <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+                              <span class="sr-only">Previous</span>
+                            </a>
+                            <a class="carousel-control-next" href="#giftCarousel" role="button" data-slide="next">
+                              <span class="carousel-control-next-icon" aria-hidden="true"></span>
+                              <span class="sr-only">Next</span>
+                            </a>
+                        </div>
+                    </div>
+                    <div class="card-footer ppl-footer">
+                        <a href="#" class="btn btn-primary btn-sm">Upload <i class="fa fa-camera" aria-hidden="true"></i></a>
+                        <a href="#" class="btn btn-primary btn-sm">Delete <i class="fa fa-gift" aria-hidden="true"></i></a>
+                        <a href="#" class="btn btn-primary btn-sm">Share <i class="fa fa-list" aria-hidden="true"></i></a>
+                    </div>
+                </div>
+            </div>
+    </div>
+</div>
+
+<script src="assets/javascript/mypeople.js"></script>

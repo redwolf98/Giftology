@@ -1,0 +1,90 @@
+body {
+  padding-top: 56px;
+}
+
+@media (min-width: 992px) {
+  body {
+    padding-top: 90px;
+  }
+}
+
+h3 {
+  color: #343A3F;
+}
+
+.lead {
+  color: white;
+
+}
+
+.jumbotron {
+  /*background-image: url("../assets/images/jumbo-bg2.png");
+  background-size: cover;
+  background-color: transparent;*/
+
+  background: url("../assets/images/jumbo-bg2.png") no-repeat center center;
+    -webkit-background-size: 100% 100%;
+    -moz-background-size: 100% 100%;
+    -o-background-size: 100% 100%;
+    background-size: 100% 100%;
+}
+
+
+.btn-info, .btn-primary {
+background-color: #343A3F;
+border: none;
+}
+
+.btn-info:hover, .btn-primary:hover {
+background-color: #39BBA5;
+}
+
+.text1 {
+    color: #343A3F;
+  }
+
+.list-group {
+  width: 200px;
+}
+
+.list-group-item-action active {
+  background-color: black;
+}
+
+.center-block {
+    display: block;
+    margin-left: auto;
+    margin-right: auto;
+ }
+
+ .edit {
+   color: #2fbaa6;
+ }
+
+ .list-group-item  {
+   font-weight: bold;
+ }
+
+ .btn-file {
+    position: relative;
+    overflow: hidden;
+}
+.btn-file input[type=file] {
+    position: absolute;
+    top: 0;
+    right: 0;
+    min-width: 100%;
+    min-height: 100%;
+    font-size: 100px;
+    text-align: right;
+    filter: alpha(opacity=0);
+    opacity: 0;
+    outline: none;
+    background: white;
+    cursor: inherit;
+    display: block;
+}
+
+#img-upload{
+    width: 100%;
+}

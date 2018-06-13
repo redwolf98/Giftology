@@ -1,0 +1,66 @@
+<% layout('layout') -%>
+    
+    <div class="row">
+        <div class="col"></div>
+        <div class="col-sm-6" style="margin-top: 30px;">
+            <div class="card text-center add-card">
+                <div class="card-body">
+                    <h3 class="add-header">New Person</h3>
+                    <form class="form-horizontal" role="form" method="post" action="/addPerson" onSubmit="return checkblank(this);">
+                        <% if (message && message.length > 0) { %>
+                            <div class="alert alert-danger col-sm-12">
+                                <%= message %>
+                            </div>
+                            <% } %>
+                                <div id="signupalert" style="display:none" class="alert alert-danger">
+                                    <p>Error:</p>
+                                    <span></span>
+                                </div>
+
+                                <div class="form-group">
+                                    <label for="first_name" class="col-12 control-label"></label>
+                                    <div class="col-12">
+                                        <input type="text" class="form-control" name="first_name" placeholder="First Name">
+                                    </div>
+                                </div>
+                                <div class="form-group">
+                                    <label for="last_name" class="col-12 control-label"></label>
+                                    <div class="col-12">
+                                        <input type="text" class="form-control" name="last_name" placeholder="Last Name">
+                                    </div>
+                                </div>
+                                <div class="form-group">
+                                    <label for="relationship" class="col-12 control-label"></label>
+                                    <div class="col-12">
+                                        <input type="text" class="form-control" name="relationship" placeholder="Relationship">
+                                    </div>
+                                </div>
+                                <div class="form-group">
+                                    <label for="birthdate" class="col-12 control-label"></label>
+                                    <div class="col-12">
+                                        <input type="text" class="form-control" name="address" placeholder="Address">
+                                    </div>
+                                </div>
+                                <div class="form-group">
+                                    <label for="photo_url" class="col-12 control-label"></label>
+                                    <div class="col-12">
+                                        <input type="text" class="form-control" name="photo_url" placeholder="Photo URL (optional)">
+                                    </div>
+                                </div>
+
+                                <div class="form-group">
+                                    <!-- Button -->
+                                    <button id="btn-addPerson" type="submit" class="btn btn-info">
+                                        <i class="icon-hand-right"></i>Add</button>
+                                    <!-- <a href="/people" >View List</a>-->
+                                    <!-- piece from original code???!-->
+                                    <!-- <div class="panel-title">Sign Up</div> -->
+                                </div>
+                </div>
+            </div>
+            </form>
+        </div>
+        <div class="col"></div>
+    </div>
+
+

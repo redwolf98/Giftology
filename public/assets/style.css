@@ -1,0 +1,216 @@
+body { padding-top: 60px; }
+
+h3 { color: #343A3F; }
+
+/* Walmart-btn overflow fix on small screens*/
+@media (max-width: 350px) { 
+  .wal-btn-div { padding: 0; margin: 0;}
+  .ppl-footer {padding-right: 0; padding-left: 10px;}
+}
+
+ /*Large screen media query*/
+@media (min-width: 992px) { 
+  .navbar-toggle { visibility: hidden; }
+  .product-card:hover {
+    -moz-transform: scale(1.05);
+    -webkit-transform: scale(1.05);
+    -o-transform: scale(1.05);
+    -ms-transform: scale(1.05);
+    transform: scale(1.05);
+  }
+}
+
+/* Navbar CSS*/
+.navbar-toggle:hover { cursor: pointer; }
+.navbar-toggle {
+  width: 30px;
+  height: 30px;
+  background-color: #39BBA5;
+  padding: 0;
+}
+
+.item-img { margin: 0 auto;}
+.carousel-control-prev, .carousel-control-next { background-color: #343A3F; }
+.relation-card {
+  visibility: hidden;
+  background-color: rgba(57, 187, 165, .4);
+}
+
+.lead { color: white; }
+
+.jumbotron, .background-gifts {
+  /*background-image: url("../assets/images/jumbo-bg2.png");
+  background-size: cover;
+  background-color: transparent;*/
+  background: url("../assets/images/jumbo-bg2.png") no-repeat center center;
+    -webkit-background-size: 100% 100%;
+    -moz-background-size: 100% 100%;
+    -o-background-size: 100% 100%;
+    background-size: 100% 100%;
+}
+
+.btn-info, .btn-primary {
+  background-color: #343A3F;
+  border: none;
+}
+
+.btn-info:hover, .btn-primary:hover {
+  background-color: #39BBA5;
+  cursor: pointer;
+}
+
+#search-group {
+  background-color: #39BBA5;
+  border-radius: 25px;
+  padding: 20px 10px 20px 10px;
+  margin: 20px 0 0 10px;
+}
+
+.product-header { background-color: white !important;}
+.product-card {
+  background-color: rgb(215, 240, 245);
+  -webkit-transition: 0.3s ease-in-out;
+  -moz-transition: 0.3s ease-in-out;
+  -o-transition: 0.3s ease-in-out;
+  transition: 0.3s ease-in-out;
+}
+
+.add-btn {
+  color: white !important;
+}
+
+.badge {
+  width: 60%;
+  height: 20px;
+  margin: 5px;
+  background-color: #39BBA5;
+  border: 1px solid #343A3F;
+}
+
+.checkBox {
+  width: 18px;
+  height: 18px;
+}
+
+.modal-footer {
+  background-color: rgba(0,0,0,.03);
+}
+.modal-body {
+  max-height: 300px;
+  overflow: auto;
+}
+
+.text1 {
+  color: #343A3F;
+}
+
+.card-img-top {
+  max-width: 180px;
+  max-height: 180px;
+  display: block;
+  margin: 0 auto;
+}
+
+.card-text {
+  max-height: 150px;
+  overflow: auto;
+}
+
+.list-group {
+  width: 200px;
+}
+
+.header-btn {
+  background-color:#39BBA5 !important; 
+  border: 1px solid black !important;
+}
+
+.add-people {
+  margin: 30px 0 0 0px;
+  height: 50px;
+  padding-left: 20px;
+  padding-right: 20px;
+  text-decoration: none;
+  text-align: center;
+  color: white;
+  background-color:#343A3F;
+  border: 1px solid black;
+}
+
+.add-people:hover {
+  color: #39BBA5 !important;
+}
+
+.fa-plus-square {
+  padding-top: 10px;
+  -ms-transform: scale(2, 2); /* IE 9 */
+  -webkit-transform: scale(2, 2); /* Safari */
+  transform: scale(2, 2);
+}
+
+.list-group-item-action active {
+  background-color: black;
+}
+
+.center-block {
+  display: block;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+.about-container {
+  margin-top: 18px;
+}
+
+.person-div {
+  display: inline;
+}
+.person-btn:hover { cursor: pointer; }
+
+/* /Shopping scrollbar style*/
+.style-3::-webkit-scrollbar-track
+{
+  -webkit-box-shadow: inset 0 0 6px rgba(0,0,0,0.3);
+  box-shadow: inset 0 0 6px rgba(0,0,0,0.3);
+	background-color: #F5F5F5;
+}
+.style-3::-webkit-scrollbar             { width: 8px; background-color: #F5F5F5; }
+.style-3::-webkit-scrollbar-thumb       { background-color: #000000; }
+.style-3::-webkit-scrollbar-thumb:hover { background-color: #39BBA5; }
+
+.portrait-image{margin:0 auto;}
+a{
+  color:#ffffff;
+}
+a:hover{
+  text-decoration: none;
+  color:white;
+}
+
+.signupLink{
+  color: blue;
+}
+.signupLink:hover{
+  color: blue;
+  text-decoration: none;
+  font-weight: bold;
+}
+
+.add-card {
+  background-color: #39BBA5;
+}
+.add-header {
+  background-color: #343A3F;
+  border-radius: 25px;
+  color: white;
+}
+
+#loading-img {
+  visibility: hidden;
+  -webkit-animation:spin 2s linear infinite;
+  -moz-animation:spin 2s linear infinite;
+  animation:spin 2s linear infinite;
+}
+@-moz-keyframes spin { 100% { -moz-transform: rotate(360deg); } }
+@-webkit-keyframes spin { 100% { -webkit-transform: rotate(360deg); } }
+@keyframes spin { 100% { -webkit-transform: rotate(360deg); transform:rotate(360deg); } }
